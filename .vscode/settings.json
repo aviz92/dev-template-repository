@@ -4,7 +4,7 @@
     "python.analysis.autoSearchPaths": true,
     "redhat.telemetry.enabled": false, // Disables telemetry collection by Red Hat extensions (e.g., for YAML)
     "window.commandCenter": true, // Enables Command Center in VS Code
-    "diffEditor.hideUnchangedRegions.enabled": true, // Hides unchanged regions in diff editor for clarity
+    "diffEditor.hideUnchangedRegions.enabled": false, // Hides unchanged regions in diff editor for clarity
     "python.analysis.diagnosticSeverityOverrides": {
         "reportMissingImports": "none"
     }, // Disable warnings/errors about missing imports
