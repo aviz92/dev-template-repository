@@ -1,0 +1,22 @@
+setuptools
+wheel
+dotenv
+pytest
+
+custom-python-logger
+python-simple-email-sender
+python-vault
+python-jira-plus
+python-notion-plus
+python-pandas-translation
+python-databases
+pytest-plugins
+pytest-dynamic-parameterize
+pyrest-model-client
+
+# python-base-toolkit  @ https://github.com/aviz92/python-base-toolkit.git
+
+# ## Private repos ##
+# python-custom-exceptions @ git+https://github.com/aviz92/python-custom-exceptions.git
+# pytest-plugin-jira-reporter @ git+https://github.com/aviz92/pytest-plugin-jira-reporter.git
+# pytest-plugin-db-reporter @ git+https://github.com/aviz92/pytest-plugin-db-reporter.git
