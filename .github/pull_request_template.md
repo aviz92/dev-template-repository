@@ -32,5 +32,8 @@
 ### 📚 Documentation
   * [ ] **Version in setup.py updated.**
   * [ ] **Updated README / inline docs for any new behavior.**
+  * [ ] **Update requirements.txt if needed.**
+  * [ ] **Updated changelog if needed.**
+  * [ ] **Set up GitHub repository secrets for CI/CD.**
 
 ---
