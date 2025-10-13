@@ -1,6 +1,7 @@
 setuptools
 wheel
 dotenv
+pre-commit
 pydantic
 pytest
 tenacity
