@@ -3,8 +3,9 @@
 ---
 
 - Code follows project style guidelines:
-  * [ ] **Code is self-reviewed and cleaned up.**
-  * [ ] **Code follows style guidelines** (e.g., linting, formatting)
+  * [ ] Code is **self-reviewed and cleaned up**.
+  * [ ] Code is **reviewed by github-copilot.**
+  * [ ] Code follows **style guidelines** (e.g., linting, formatting)
   * [ ] **No sensitive data** (passwords, tokens, etc.)
 
 ---
@@ -17,7 +18,7 @@
 
 - Documentation updated:
   * [ ] **Version in setup.py updated.**
-  * [ ] Documentation updated (code comments, README, or other docs) (if needed)
+  * [ ] **Documentation updated** (code comments, README.md, or other docs if needed)
 
 ---
 
