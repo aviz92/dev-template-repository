@@ -79,6 +79,20 @@ cp env.template .env
    - Edit `.env` file with your environment variables
    - Update VS Code settings in `.vscode/settings.json` if needed
 
+### 4. Setup Pre-commit Hooks
+```bash
+# Install pre-commit hooks
+pre-commit install
+
+# Run on all files (optional, for existing codebase)
+pre-commit run --all-files
+```
+
+**Automatic Usage:**
+Once installed, pre-commit will automatically run on every `git commit`. If any hook fails:
+- **Fix the issues** and commit again
+- **Skip hooks** (not recommended): `git commit --no-verify`
+
 ---
 
 ## 🤝 Contributing

@@ -75,7 +75,7 @@ Below are some example user queries and tool usage patterns:
 
 ### Building APIs
 ```python
-import vllm 
+import vllm
 
 model = vllm.LLM(model="meta-llama/Meta-Llama-3-8B-Instruct")
 
