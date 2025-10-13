@@ -1,6 +1,7 @@
 {
     // ### General settings ###
     // "window.zoomLevel": 2,
+    "editor.codeLens": false,
     "python.analysis.autoSearchPaths": true,
     "redhat.telemetry.enabled": false, // Disables telemetry collection by Red Hat extensions (e.g., for YAML)
     "window.commandCenter": true, // Enables Command Center in VS Code
