@@ -1,7 +1,7 @@
 ---
 name: Bug Report
 about: Report a bug to help us achieve greatness together!
-title: "[Bug Report]"
+title: "Bug Report"
 labels: bug
 assignees: 'aviz92'
 
