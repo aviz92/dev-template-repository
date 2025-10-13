@@ -15,11 +15,12 @@
     "python.terminal.activateEnvironment": true, // Auto-activate the virtual environment in the integrated terminal
     "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python", // Use Python interpreter from local .venv folder
     "files.exclude": { // Files/folders to hide in explorer
-        // ".vscode": false, // Show .vscode folder in Explorer
+        ".vscode": false, // Show .vscode folder in Explorer
+        ".cursor": false, // Show .cursor folder in Explorer
         ".venv": false, // Show the .venv folder
         "**/.idea": true, // Hide JetBrains IDE config folders
         "**/.git": true, // Hide .git folder
-        "**/.github": true, // Hide .git folder
+        "**/.github": false, // Hide .git folder
         "**/.pytest_cache": true, // Hide pytest cache folder
         "**/__pycache__": true // Hide Python bytecode cache folders
     },
