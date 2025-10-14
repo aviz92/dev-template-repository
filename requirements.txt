@@ -9,19 +9,18 @@ requests
 
 # ## Public Aviz92 repos ##
 custom-python-logger
-python-simple-email-sender
-python-vault
-python-base-toolkit
-pytest-plugins
+pyrest-model-client
 pytest-dynamic-parameterize
+pytest-plugins
+python-base-toolkit
+python-custom-exceptions
+python-databases
+python-gitlab-plus
+python-github-plus
 python-jira-plus
 python-notion-plus
-python-pandas-translation
-python-databases
-pyrest-model-client
-python-github-plus
-python-gitlab-plus
-python-custom-exceptions
+python-simple-email-sender
+python-vault
 
 # ## Private Aviz92 repos ##
 # pytest-plugin-jira-reporter @ git+https://github.com/aviz92/pytest-plugin-jira-reporter.git
