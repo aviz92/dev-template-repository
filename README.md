@@ -86,6 +86,10 @@ pre-commit install
 
 # Run on all files (optional, for existing codebase)
 pre-commit run --all-files
+
+# Run on all files excluding specific files (example: main.py) (optional, for existing codebase)
+pre-commit run --files $(git ls-files | grep -v "main.py")
+
 ```
 
 **Automatic Usage:**
