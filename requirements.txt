@@ -21,6 +21,7 @@ python-databases
 pyrest-model-client
 python-github-plus
 python-gitlab-plus
+python-custom-exceptions
 
 # ## Private Aviz92 repos ##
 # python-custom-exceptions @ git+https://github.com/aviz92/python-custom-exceptions.git
