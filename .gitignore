@@ -170,6 +170,9 @@ cython_debug/
 # Ruff stuff:
 .ruff_cache/
 
+# Linter
+example_failed_linter.py
+
 # PyPI configuration file
 .pypirc
 
