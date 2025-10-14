@@ -2,7 +2,7 @@
 
 [FORMAT]
 max-line-length=120
-max-attributes=10
+max-attributes=15
 max-args=10
 max-returns=10
 
@@ -26,3 +26,4 @@ disable =
     R2004,      # magic-value-comparison
     W0717,      # too-many-try-statements
     C0199,      # docstring-first-line-empty
+    C2701,      # import-private-name ; Imported private module
