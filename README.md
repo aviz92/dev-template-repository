@@ -2,7 +2,9 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python](https://img.shields.io/badge/Python-3.12+-blue.svg)](https://www.python.org/)
-[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+[![Code style: Black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+[![Code style: Ruff](https://img.shields.io/badge/code%20style-ruff-000000.svg)](https://github.com/astral-sh/ruff)
+[![Code style: Pylint](https://img.shields.io/badge/code%20style-pylint-000000.svg)](https://github.com/pylint-dev/pylint)
 
 A comprehensive, production-ready template repository for initializing new development projects with consistent tooling, editor settings, GitHub workflows, and best practices. This template serves as a **baseline setup** for modern development workflows, reducing setup overhead and promoting standardization across all your codebases.
 
