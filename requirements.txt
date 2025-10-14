@@ -24,6 +24,5 @@ python-gitlab-plus
 python-custom-exceptions
 
 # ## Private Aviz92 repos ##
-# python-custom-exceptions @ git+https://github.com/aviz92/python-custom-exceptions.git
 # pytest-plugin-jira-reporter @ git+https://github.com/aviz92/pytest-plugin-jira-reporter.git
 # pytest-plugin-db-reporter @ git+https://github.com/aviz92/pytest-plugin-db-reporter.git
