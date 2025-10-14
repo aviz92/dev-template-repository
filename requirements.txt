@@ -1,6 +1,6 @@
 setuptools
 wheel
-dotenv
+python-dotenv
 pre-commit
 pydantic
 pytest
