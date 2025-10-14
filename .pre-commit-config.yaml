@@ -15,17 +15,12 @@ repos:
       - id: check-toml                # Validates TOML files
       - id: debug-statements          # Detects debug prints (e.g. `print`, `pdb`)
       - id: pretty-format-json        # Formats JSON files
-        args: [
-            "--autofix",
-            "--no-sort-keys",
-            "--indent",
-            "4", # Adjust indent as needed
-          ]
-      - id: check-ast # Validates Python syntax
+        args: ["--autofix", "--no-sort-keys", "--indent", "4", "--ensure-newline"]
+      - id: check-ast                 # Validates Python syntax
         name: Check Python syntax
-        types: [python]             # Only run on Python files
-      - id: detect-private-key      # Detects private keys in files
-      - id: mixed-line-ending       # Detects mixed line endings
+        types: [python]               # Only run on Python files
+      - id: detect-private-key        # Detects private keys in files
+      - id: mixed-line-ending         # Detects mixed line endings
 
       # - id: requirements-txt-fixer    # Sorts and removes duplicates in requirements.txt files
       # - id: double-quote-string-fixer # Converts single quotes to double quotes in strings
