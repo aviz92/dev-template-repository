@@ -15,7 +15,13 @@ repos:
       - id: check-toml                # Validates TOML files
       - id: debug-statements          # Detects debug prints (e.g. `print`, `pdb`)
       - id: pretty-format-json        # Formats JSON files
-        args: ["--autofix", "--no-sort-keys", "--indent", "4", "--ensure-newline"]
+        args: [
+          "--autofix",
+          "--no-sort-keys",
+          "--indent",
+          "4",
+          "--ensure-newline"
+        ]
       - id: check-ast                 # Validates Python syntax
         name: Check Python syntax
         types: [python]               # Only run on Python files
