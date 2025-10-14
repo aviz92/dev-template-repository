@@ -21,7 +21,3 @@ python-jira-plus
 python-notion-plus
 python-simple-email-sender
 python-vault
-
-# ## Private Aviz92 repos ##
-# pytest-plugin-jira-reporter @ git+https://github.com/aviz92/pytest-plugin-jira-reporter.git
-# pytest-plugin-db-reporter @ git+https://github.com/aviz92/pytest-plugin-db-reporter.git
