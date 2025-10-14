@@ -1,5 +1,7 @@
-target-version = "py312"
+[tool.ruff]
+target-version = ['py312', 'py313', 'py314']
 line-length = 120
+fix = false
 
 [tool.ruff.lint]
 select = [
@@ -15,6 +17,7 @@ select = [
 ]
 
 ignore = [
+    "E203", "E501", "W503", # pycodestyle
     "ANN101", # missing-type-self
     "ANN102", # missing-type-cls
     "ANN401", # any-type
