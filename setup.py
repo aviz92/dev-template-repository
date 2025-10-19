@@ -2,7 +2,7 @@ from setuptools import find_packages, setup
 
 package_version = "0.0.1"
 
-package_name = "private-python-test"
+package_name = "dev-template-repository"
 package_description = "..."
 
 package_name_ = package_name.replace("-", "_")
