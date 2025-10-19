@@ -1,5 +1,6 @@
 name: Pytest by Marker
-# execute by "./scripts/run_pytest_marker.sh"
+# execute by "./scripts/run_pytest_marker.sh <branch-name> <marker>" or
+# "./scripts/run_pytest_marker.py <branch-name> <marker>"
 # (first set executable permission "chmod +x ./scripts/run_pytest_marker.sh")
 
 on:
