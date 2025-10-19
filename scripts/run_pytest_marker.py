@@ -8,19 +8,14 @@ logger = build_logger(__name__)
 
 
 def run_pytest_marker_workflow(
+    branch: str | None,
     marker: str,
     repo_full_name: str = "aviz92/dev-template-repository",
-    branch: str | None = None,
     workflow_name: str = "Pytest by Marker",
 ) -> None:
     github_client = GitHubClient(access_token=os.environ.get("GITHUB_TOKEN"), repo_full_name=repo_full_name)
 
-    if branch is None:
-        branch = github_client.branch.get_current_branch()
-        logger.debug(f"Detected current branch: {branch}")
-
     logger.debug("Running Pytest workflow with:" f"Marker: {marker}" f"Branch: {branch}" f"Repo: {repo_full_name}")
-
     response = github_client.workflow.trigger(
         workflow_name=workflow_name, branch_name=branch, inputs={"marker": marker}
     )
@@ -30,16 +25,24 @@ def run_pytest_marker_workflow(
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Trigger Pytest workflow on GitHub with a marker.")
-    parser.add_argument("marker", help="The marker to run (e.g., unit1)", nargs="?", default=None)
     parser.add_argument(
-        "branch", nargs="?", default=None, help="Branch to run workflow on (defaults to current branch)"
+        "branch",
+        nargs="?",
+        help="Branch to run workflow on (defaults to current branch)",
+        # default="branch-name",
     )
-    marker = parser.parse_args().marker or "unit2"
-    branch = parser.parse_args().branch or "test-ci2"
+    parser.add_argument(
+        "marker",
+        nargs="?",
+        help="The marker to run (e.g., unit1)",
+        # default="marker",
+    )
+    branch = parser.parse_args().branch
+    marker = parser.parse_args().marker
 
     run_pytest_marker_workflow(
-        marker=marker,
         branch=branch,
+        marker=marker,
     )
 
 
