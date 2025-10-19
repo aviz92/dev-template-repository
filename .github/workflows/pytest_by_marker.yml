@@ -23,6 +23,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+
       - name: Checkout code
         id: checkout-code
         uses: actions/checkout@v4
@@ -61,7 +62,7 @@ jobs:
 
       - name: Run pytest with marker
         id: run-pytest
-        run: pytest -m "${{ inputs.marker }}" --maxfail=1 --disable-warnings -q
+        run: pytest -m "${{ inputs.marker }}" --maxfail=1 --disable-warnings -v -s
 
       - name: Set final status
         id: set-final-status
