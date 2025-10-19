@@ -1,5 +1,4 @@
 import argparse
-import os
 
 from custom_python_logger import build_logger
 from python_github_plus import GitHubClient
@@ -13,14 +12,11 @@ def run_pytest_marker_workflow(
     repo_full_name: str = "aviz92/dev-template-repository",
     workflow_name: str = "Pytest by Marker",
 ) -> None:
-    github_client = GitHubClient(access_token=os.environ.get("GITHUB_TOKEN"), repo_full_name=repo_full_name)
+    github_client = GitHubClient(repo_full_name=repo_full_name)
 
     logger.debug("Running Pytest workflow with:" f"Marker: {marker}" f"Branch: {branch}" f"Repo: {repo_full_name}")
-    response = github_client.workflow.trigger(
-        workflow_name=workflow_name, branch_name=branch, inputs={"marker": marker}
-    )
-    if response.state:
-        logger.info("Workflow triggered successfully!")
+    _ = github_client.workflow.trigger(workflow_name=workflow_name, branch_name=branch, inputs={"marker": marker})
+    logger.info("Workflow triggered successfully!")
 
 
 def main() -> None:
