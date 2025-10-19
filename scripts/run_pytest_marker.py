@@ -35,7 +35,7 @@ def main() -> None:
         "marker",
         nargs="?",
         help="The marker to run (e.g., unit1)",
-        # default="marker",
+        # default="marker-name",
     )
     branch = parser.parse_args().branch
     marker = parser.parse_args().marker
