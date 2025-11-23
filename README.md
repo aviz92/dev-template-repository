@@ -60,11 +60,11 @@ git clone https://github.com/your-username/your-new-repo.git
 cd your-new-repo
 
 # Create virtual environment
-python -m venv .venv
-source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+uv venv
+source .venv/bin/activate   # On Windows: .venv\Scripts\activate
 
 # Install dependencies
-pip install -r requirements.txt
+uv sync # or uv pip install -r requirements.txt
 
 # Copy environment template
 cp env.template .env

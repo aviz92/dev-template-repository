@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "<xxxxx-project-name>"
+version = "0.0.1"
+description = "<xxxxx_project_description>"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "Avi Zaguri" },]
+keywords = ["<xxxxx_project_keywords>", "development"]
+
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3.11",
+    "Operating System :: OS Independent",
+    "Topic :: System :: Logging",
+]
+
+dependencies = [
+    # uv add --requirements requirements_suggestion.txt
+]
+
+[project.urls]
+Homepage = "<xxxxx_project_homepage>"
+Repository = "<xxxxx_project_homepage>"
+Issues = "<xxxxx_project_homepage>/issues"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["<xxxxx_project_name>*"]
+namespaces = false
