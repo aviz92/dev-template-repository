@@ -3,14 +3,14 @@ requires = ["setuptools", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "<xxxxx-project-name>"
+name = "xxxxx-project-name"
 version = "0.0.1"
-description = "<xxxxx_project_description>"
+description = "xxxxx_project_description"
 readme = "README.md"
 requires-python = ">=3.11"
 license = { text = "MIT" }
 authors = [{ name = "Avi Zaguri" },]
-keywords = ["<xxxxx_project_keywords>", "development"]
+keywords = ["xxxxx_project_keywords", "development"]
 
 classifiers = [
     "Development Status :: 4 - Beta",
@@ -25,11 +25,11 @@ dependencies = [
 ]
 
 [project.urls]
-Homepage = "<xxxxx_project_homepage>"
-Repository = "<xxxxx_project_homepage>"
-Issues = "<xxxxx_project_homepage>/issues"
+Homepage = "https://github.com/aviz92/xxxxx-project-name"
+Repository = "https://github.com/aviz92/xxxxx-project-name"
+Issues = "https://github.com/aviz92/xxxxx-project-name/issues"
 
 [tool.setuptools.packages.find]
 where = ["."]
-include = ["<xxxxx_project_name>*"]
+include = ["xxxxx_project_name*"]
 namespaces = false
