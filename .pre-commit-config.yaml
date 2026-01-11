@@ -56,17 +56,6 @@ repos: # Black → isort → Ruff (fix=false) → Pylint
         ]
         types: [ python ]
 
-  - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.9.7
-    hooks:
-      - id: ruff
-        name: Ruff (Python linter tests)
-        args: [
-          "--fix",
-          "--config=.config/ruff.toml"
-        ]
-        types: [ python ]
-
     # ### pylint ###
   - repo: https://github.com/pycqa/pylint
     rev: v3.0.3
