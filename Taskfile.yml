@@ -1,4 +1,5 @@
 # https://taskfile.dev
+# Installation on mac: brew install go-task/tap/go-task
 
 version: "3"
 
