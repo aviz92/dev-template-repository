@@ -1,6 +1,7 @@
 # https://pre-commit.com
 # https://github.com/pre-commit
 # pre-commit run --all-files
+# uv run pre-commit run --all-files
 
 repos: # Black → isort → Ruff (fix=false) → Pylint
   # ### pre-commit-hooks ###
