@@ -1,0 +1,20 @@
+# https://taskfile.dev
+
+version: "3"
+
+includes:
+  infra: task_files/internal_tasks.yml
+
+vars:
+  # Dynamically detect uv binary location
+  UV_BIN:
+    sh: |
+      if command -v uv >/dev/null 2>&1; then
+        command -v uv
+      elif [ -x "/root/.local/bin/uv" ]; then
+        echo "/root/.local/bin/uv"
+      elif [ -x "$HOME/.local/bin/uv" ]; then
+        echo "$HOME/.local/bin/uv"
+      else
+        echo "/root/.local/bin/uv"
+      fi
