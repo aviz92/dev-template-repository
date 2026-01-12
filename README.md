@@ -102,6 +102,18 @@ Once installed, pre-commit will automatically run on every `git commit`. If any 
 - **Fix the issues** and commit again
 - **Skip hooks** (not recommended): `git commit --no-verify`
 
+### 5. Go-Task
+This template uses **Go-Task** to provide a consistent interface for common development commands.
+
+```bash
+# List available tasks
+task --list
+```
+
+Use `task <task-name>` to run predefined workflows such as linting, formatting, testing, or other project utilities.
+
+All tasks are defined in `Taskfile.yml` at the repository root and are intended to standardize local development and CI usage.
+
 ---
 
 ## 🤝 Contributing
