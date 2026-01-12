@@ -8,6 +8,10 @@ includes:
 
 vars:
   # Dynamically detect uv binary location
+  OS:
+    sh: |
+      echo {{OS}}
+
   UV_BIN:
     sh: |
       if command -v uv >/dev/null 2>&1; then
@@ -19,3 +23,22 @@ vars:
       else
         echo "/root/.local/bin/uv"
       fi
+
+  VENV_PYTHON_PATH:
+      sh: |
+        find "$VIRTUAL_ENV/lib" -maxdepth 1 -type d -name "python*" | head -n1
+  DOT_VENV_PYTHON_PATH:
+    sh: |
+      find "$VIRTUAL_ENV/lib" -maxdepth 1 -type d -name "python*" | head -n1 | sed 's|^.*/\.venv/|.venv/|'
+
+  GIT_BRANCH:
+      sh: git branch --show-current
+  GIT_COMMIT_HASH:
+      sh: git rev-parse --short HEAD
+
+tasks:
+  print-vars:
+    desc: "Print all task variables - command: task print-vars --verbose"
+    cmds:
+      - |
+        echo {{.OS}}
