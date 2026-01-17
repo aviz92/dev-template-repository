@@ -3,6 +3,9 @@
 
 version: "3"
 
+dotenv:
+  - .env
+
 includes:
   infra: .venv/lib/python3.13/site-packages/python_base_toolkit/ci/task_files/includes.yml
 
