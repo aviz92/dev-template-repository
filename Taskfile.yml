@@ -4,7 +4,7 @@
 version: "3"
 
 includes:
-  infra: task_files/internal_tasks.yml
+  infra: .venv/lib/python3.13/site-packages/python_base_toolkit/ci/task_files/main.yml
 
 vars:
   # Dynamically detect uv binary location
