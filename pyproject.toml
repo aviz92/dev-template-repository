@@ -20,7 +20,7 @@ classifiers = [
 ]
 
 dependencies = [
-    "custom-python-logger>=2.0.10",
+    "custom-python-logger>=2.0.11",
     "pre-commit>=4.5.0",
     "pydantic>=2.12.4",
     "pyrest-model-client>=0.0.4",
