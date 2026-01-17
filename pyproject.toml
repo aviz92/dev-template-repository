@@ -27,7 +27,7 @@ dependencies = [
     "pytest>=9.0.1",
     "pytest-dynamic-parameterize>=0.1.12",
     "pytest-plugins>=1.0.10",
-    "python-base-toolkit==0.0.9",
+    "python-base-toolkit==0.0.10",
     "python-custom-exceptions>=0.0.2",
     "python-databases>=0.1.7",
     "python-dotenv>=1.2.1",
