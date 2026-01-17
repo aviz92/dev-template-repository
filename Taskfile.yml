@@ -19,11 +19,10 @@ tasks:
   install-deps:
     desc: "Install all dependencies."
     deps:
-      - infra:install-uv
+      - infra:install:install-uv
       - infra:deploy:clean
     cmds:
       - rm uv.lock || true
-      - rm .venv || true
       - sleep 5
       - uv cache clean
       - uv sync
