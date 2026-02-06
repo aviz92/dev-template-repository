@@ -20,6 +20,8 @@ def run_pytest_marker_workflow(
 
 
 def main() -> None:
+    logger.info("This script triggers the Pytest workflow on GitHub with a specified marker.")
+
     parser = argparse.ArgumentParser(description="Trigger Pytest workflow on GitHub with a marker.")
     parser.add_argument(
         "branch",

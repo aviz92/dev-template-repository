@@ -55,3 +55,6 @@ Issues = "https://github.com/aviz92/dev-template-repository/issues"
 [tool.setuptools.packages.find]
 where = ["."]
 namespaces = false
+
+[project.scripts]  # must using "uv pip install -e ." first
+run_pytest_marker = "scripts.run_pytest_marker:main"
