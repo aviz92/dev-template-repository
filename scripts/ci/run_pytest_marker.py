@@ -1,5 +1,3 @@
-import argparse
-
 from custom_python_logger import build_logger
 from python_github_plus import GitHubClient
 
@@ -22,26 +20,26 @@ def run_pytest_marker_workflow(
 def main() -> None:
     logger.info("This script triggers the Pytest workflow on GitHub with a specified marker.")
 
-    parser = argparse.ArgumentParser(description="Trigger Pytest workflow on GitHub with a marker.")
-    parser.add_argument(
-        "branch",
-        nargs="?",
-        help="Branch to run workflow on (defaults to current branch)",
-        # default="branch-name",
-    )
-    parser.add_argument(
-        "marker",
-        nargs="?",
-        help="The marker to run (e.g., unit1)",
-        # default="marker-name",
-    )
-    branch = parser.parse_args().branch
-    marker = parser.parse_args().marker
-
-    run_pytest_marker_workflow(
-        branch=branch,
-        marker=marker,
-    )
+    # parser = argparse.ArgumentParser(description="Trigger Pytest workflow on GitHub with a marker.")
+    # parser.add_argument(
+    #     "branch",
+    #     nargs="?",
+    #     help="Branch to run workflow on (defaults to current branch)",
+    #     # default="branch-name",
+    # )
+    # parser.add_argument(
+    #     "marker",
+    #     nargs="?",
+    #     help="The marker to run (e.g., unit1)",
+    #     # default="marker-name",
+    # )
+    # branch = parser.parse_args().branch
+    # marker = parser.parse_args().marker
+    #
+    # run_pytest_marker_workflow(
+    #     branch=branch,
+    #     marker=marker,
+    # )
 
 
 if __name__ == "__main__":
