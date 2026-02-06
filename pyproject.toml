@@ -18,6 +18,7 @@ classifiers = [
     "Intended Audience :: Developers",
     "Framework :: Pytest",
     "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Libraries :: Python Modules",
 ]
 
 dependencies = [
