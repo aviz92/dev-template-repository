@@ -31,5 +31,8 @@ Issues = "https://github.com/aviz92/xxxxx-project-name/issues"
 
 [tool.setuptools.packages.find]
 where = ["."]
-include = ["xxxxx_project_name*"]
+# include = ["xxxxx_project_name*"]
 namespaces = false
+
+[project.scripts]  # must using "uv sync" or "uv pip install -e ." first
+run_pytest_marker = "scripts.run_pytest_marker:main"
