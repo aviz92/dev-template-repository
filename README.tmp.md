@@ -1,9 +1,9 @@
-![PyPI version](https://img.shields.io/pypi/v/custom-python-logger)
+![PyPI version](https://img.shields.io/pypi/v/<REPO_NAME>)
 ![Python](https://img.shields.io/badge/python->=3.12-blue)
 ![Development Status](https://img.shields.io/badge/status-stable-green)
 ![Maintenance](https://img.shields.io/maintenance/yes/2026)
-![PyPI](https://img.shields.io/pypi/dm/custom-python-logger)
-![License](https://img.shields.io/pypi/l/custom-python-logger)
+![PyPI](https://img.shields.io/pypi/dm/<REPO_NAME>)
+![License](https://img.shields.io/pypi/l/<REPO_NAME>)
 
 ---
 
