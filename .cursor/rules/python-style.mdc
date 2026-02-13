@@ -1,0 +1,158 @@
+---
+alwaysApply: false
+globs: "**/*.py"
+description: Python code style guidelines for PEP 8 compliance, formatting, naming conventions, and code style best practices.
+---
+
+# Python Code Style Agent
+
+## Base Rules
+
+- **PEP 8 Compliance**: Follow PEP 8 guidelines for logic and structure, excluding naming/spacing conventions (which may
+  be customized per project)
+- **Type Hints**: Mandatory for every function - all parameters and return types must be type-hinted
+- **Docstrings**: Mandatory Google-style docstrings for complex functions and classes
+- **Simplicity**: Avoid complex helper abstractions when a single function suffices - prefer straightforward, readable
+  code
+- **Documentation**: Every project must include a `README.md` with overview, setup instructions, and usage examples
+
+## Code Style Standards
+
+### PEP 8 Compliance
+
+- **Line Length**: Maximum 100 characters per line (prefer 88-100)
+- **Indentation**: Use 4 spaces, never tabs
+- **Blank Lines**:
+    - Two blank lines between top-level definitions (classes, functions)
+    - One blank line between method definitions within a class
+    - Use blank lines to separate logical sections
+
+### Naming Conventions
+
+- **Classes**: `PascalCase` (e.g., `UserProfile`, `DatabaseConnection`)
+- **Functions/Variables**: `snake_case` (e.g., `get_user_by_id`, `user_count`)
+- **Constants**: `UPPER_SNAKE_CASE` (e.g., `MAX_RETRIES`, `DEFAULT_TIMEOUT`)
+- **Private**: `_leading_underscore` for internal use (e.g., `_internal_method`)
+- **Protected**: `_single_leading_underscore` for subclass use
+- **Name Mangling**: `__double_leading_underscore` to avoid name clashes
+
+### Import Organization (PEP 8)
+
+1. **Standard library imports** (grouped)
+2. **Third-party imports** (grouped)
+3. **Local application imports** (grouped)
+4. Blank line between each group
+
+Example:
+
+```python
+import os
+import sys
+from typing import Optional, Union
+
+import django
+from rest_framework import serializers
+
+from apps.system.models import User
+from apps.system.utils import helper_function
+```
+
+### Whitespace
+
+- **Around operators**: Use spaces around operators (`x = y + z`, not `x=y+z`)
+- **After commas**: Always use space after commas
+- **Function calls**: Use keyword arguments format: `func(x=y, z=w)` not `func(x, z)` or `func (x=y)`
+- **Slicing**: No spaces inside brackets: `list[1:3]` not `list[1 : 3]`
+
+### String Quotes
+
+- Use double quotes for strings that contain single quotes
+- Use single quotes for strings that contain double quotes
+- Be consistent within a file
+- Prefer double quotes for docstrings
+
+### Comments
+
+- **Inline comments**: Use sparingly, explain "why" not "what"
+- **Block comments**: Use for complex logic explanations
+- **Docstrings**: Mandatory Google-style docstrings for complex functions and classes
+- **TODO comments**: Format as `# TODO: description` or `# FIXME: description`
+
+### Docstrings - Google Style (Mandatory)
+
+All complex functions and classes MUST use Google-style docstrings:
+
+```python
+def process_data(data: dict[str, Any], validate: bool = True) -> dict[str, Any]:
+    """Process input data and return transformed result.
+
+    Explanation:
+        This function takes raw input data, optionally validates it according to
+        predefined rules, and transforms it into a standardized format. The
+        transformation includes data normalization, type conversion, and structure
+        reorganization. If validation is enabled and fails, the function raises
+        appropriate exceptions.
+
+    Args:
+        data: Dictionary containing input data to process.
+        validate: Whether to validate the input data before processing. Defaults to True.
+
+    Returns:
+        Dictionary containing processed data.
+
+    Raises:
+        ValueError: If data validation fails.
+        KeyError: If required keys are missing from data.
+
+    Example:
+        >>> result = process_data(data={"name": "test"}, validate=True)
+        >>> print(result["processed"])
+        True
+    """
+    pass
+```
+
+**Required sections** (when applicable):
+
+- **Explanation**: Detailed explanation of what the function/class does and how it works
+- **Args**: Parameter descriptions with types
+- **Returns**: Return value description with type
+- **Raises**: Exceptions that may be raised
+- **Example**: Usage examples for complex functions
+- **Note**: Additional notes or warnings
+
+### Type Annotations Style (Mandatory)
+
+- **Mandatory**: Every function MUST have complete type hints for all parameters and return types
+- Use built-in types for Python 3.9+: `list[str]`, `dict[str, int]`
+- Import from `typing` only when needed: `Optional`, `Union`, `Callable`, `TypeVar`
+- Place type hints on the same line as function definitions
+- Use `|` for union types in Python 3.10+: `str | None` instead of `Optional[str]`
+- Example: `def get_user(user_id: int, include_profile: bool = False) -> User | None:`
+
+### Code Formatting
+
+- **Trailing commas**: Use in multi-line structures (lists, dicts, function args)
+- **Line breaks**: Break long lines at logical points (after operators, commas)
+- **Parentheses**: Use parentheses for line continuation when appropriate
+- **No trailing whitespace**: Remove trailing spaces at end of lines
+
+### Best Practices
+
+- **Simplicity**: Avoid complex helper abstractions when a single function suffices - prefer straightforward, readable
+  code
+- **Avoid**: `from module import *`
+- **Prefer**: Explicit imports
+- **Use**: `__all__` to define public API if needed
+- **Avoid**: Unused imports
+- **Always use**: Absolute/full path imports - never use relative imports (`.`, `..`)
+- **Function calls**: Prefer keyword arguments: `func(param=value)` over positional: `func(value)`
+
+### Documentation Requirements
+
+- **README.md**: Every project MUST include a `README.md` with:
+    - Project overview and purpose
+    - Setup/installation instructions
+    - Usage examples
+    - Configuration details (if applicable)
+    - Contributing guidelines (if applicable)
