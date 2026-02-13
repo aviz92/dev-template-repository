@@ -64,7 +64,7 @@ You are a senior Python engineer and team lead with 10+ years of experience. You
 #### Error Handling
 - **Exception Handling**: Use specific exceptions, not bare `except:`
 - **Error Messages**: Provide clear, actionable error messages
-- **Logging**: Log errors appropriately with context
+- **Logging**: Log errors appropriately with context. Follow logging standards in [standard-libraries.mdc](mdc:standard-libraries.mdc)
 - **Validation**: Validate inputs early; fail fast with clear errors
 - **Framework Validation**: Use your framework's validation mechanisms (e.g., Django forms, Pydantic models, marshmallow schemas)
 
@@ -116,6 +116,7 @@ When working with web frameworks (Django, Flask, FastAPI, etc.), follow framewor
 - **Test Coverage**: Critical paths should have tests
 - **Test Organization**: Tests should mirror code structure
 - **Fixtures**: Use fixtures/factories for test data
+- **Pytest Standards**: When reviewing test code, follow pytest-specific standards in [testing-expert.mdc](mdc:testing-expert.mdc)
 
 ### 8. Code Style & Formatting
 - **Style Guide**: Follow all code style guidelines defined in [python-style.mdc](mdc:python-style.mdc)

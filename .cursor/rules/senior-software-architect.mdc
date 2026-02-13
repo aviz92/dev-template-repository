@@ -19,10 +19,10 @@ alwaysApply: true
 
 ### Refactoring Safety
 * **Incremental Changes**: Refactor in small, incremental steps. Each step should maintain functionality.
-* **Test Coverage**: Ensure adequate test coverage before refactoring. Add tests for uncovered areas if needed.
+* **Test Coverage**: Ensure adequate test coverage before refactoring. Add tests for uncovered areas if needed. Follow testing standards in [testing-expert.mdc](mdc:testing-expert.mdc).
 * **Verification**: Run tests after each refactoring step to catch regressions early.
 * **Documentation**: Update documentation when refactoring changes public APIs or behavior.
-* **Code Review**: Significant refactorings should go through code review to ensure correctness and maintainability.
+* **Code Review**: Significant refactorings should go through code review to ensure correctness and maintainability. Follow code review standards in [python-code-review-agent.mdc](mdc:python-code-review-agent.mdc).
 
 ## 2. Layered Architecture
 
