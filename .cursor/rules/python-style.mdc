@@ -1,7 +1,8 @@
 ---
-alwaysApply: false
-globs: "**/*.py"
 description: Python code style guidelines for PEP 8 compliance, formatting, naming conventions, and code style best practices.
+globs:
+  - "**/*.py"
+alwaysApply: true
 ---
 
 # Python Code Style Agent
@@ -20,7 +21,7 @@ description: Python code style guidelines for PEP 8 compliance, formatting, nami
 
 ### PEP 8 Compliance
 
-- **Line Length**: Maximum 100 characters per line (prefer 88-100)
+- **Line Length**: Maximum 120 characters per line (prefer 100-120). Adjust based on project linter configuration.
 - **Indentation**: Use 4 spaces, never tabs
 - **Blank Lines**:
     - Two blank lines between top-level definitions (classes, functions)
@@ -50,8 +51,8 @@ import os
 import sys
 from typing import Optional, Union
 
-import django
-from rest_framework import serializers
+import requests
+from flask import Flask
 
 from apps.system.models import User
 from apps.system.utils import helper_function
@@ -76,7 +77,7 @@ from apps.system.utils import helper_function
 - **Inline comments**: Use sparingly, explain "why" not "what"
 - **Block comments**: Use for complex logic explanations
 - **Docstrings**: Mandatory Google-style docstrings for complex functions and classes
-- **TODO comments**: Format as `# TODO: description` or `# FIXME: description`
+- **TODO comments**: Format as `# TODO(username): description` or `# TODO: description`. Include JIRA ticket reference when applicable: `# TODO(username): Implement X (JIRA-123)`
 
 ### Docstrings - Google Style (Mandatory)
 
@@ -117,7 +118,7 @@ def process_data(data: dict[str, Any], validate: bool = True) -> dict[str, Any]:
 - **Explanation**: Detailed explanation of what the function/class does and how it works
 - **Args**: Parameter descriptions with types
 - **Returns**: Return value description with type
-- **Raises**: Exceptions that may be raised
+- **Raises**: Exceptions that may be raised (optional - include when exceptions are non-obvious or important for API users)
 - **Example**: Usage examples for complex functions
 - **Note**: Additional notes or warnings
 
@@ -136,6 +137,17 @@ def process_data(data: dict[str, Any], validate: bool = True) -> dict[str, Any]:
 - **Line breaks**: Break long lines at logical points (after operators, commas)
 - **Parentheses**: Use parentheses for line continuation when appropriate
 - **No trailing whitespace**: Remove trailing spaces at end of lines
+
+### Linter & Type Checker
+
+- **Linter Errors**: Always address linter errors when encountered. Prioritize code readability over fixing every warning.
+- **Type Ignores**: When ignoring type (never without user approve) checker errors, always document the reason:
+  ```python
+  # type: ignore[error-code]  # Explanation of why this is safe/necessary
+  # type: ignore  # false positive - linter incorrectly flags this
+  ```
+- **Linter Configuration**: Follow project linter configuration (pylintrc, ruff.toml, etc.). Respect project-specific disabled warnings.
+- **False Positives**: For false positives, add explanatory comments. Leave uncertain cases for future review.
 
 ### Best Practices
 

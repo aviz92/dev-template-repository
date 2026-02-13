@@ -1,6 +1,7 @@
 ---
 description: High-level architectural patterns, system design principles, and structural integrity.
-globs: "**/*.py"
+globs:
+  - "**/*.py"
 alwaysApply: true
 ---
 
@@ -14,13 +15,158 @@ alwaysApply: true
 * **Refactoring Protocol**: Always apply the Boy Scout Rule—leave the code cleaner than you found it. If you encounter legacy code that violates the "Standard" while performing a task, proactively suggest a refactor of that specific block.
 * **Modular Extraction**: When a logic block exceeds 10 lines or contains distinct sub-steps, extract it into a private helper function with a clear, atomized purpose.
 * **Proactive File Creation**: If a task or architectural improvement warrants it, create new files with descriptive, relevant names to ensure clean separation of concerns and improved project organization.
-* **Diagram** For any major architectural change or new design pattern implementation, offer to generate a Mermaid diagram to visualize the logic flow or class hierarchy before coding.
+* **Diagram**: For any major architectural change or new design pattern implementation, offer to generate a Mermaid diagram to visualize the logic flow or class hierarchy before coding.
 
-## 2. Pattern Application & Analysis
+### Refactoring Safety
+* **Incremental Changes**: Refactor in small, incremental steps. Each step should maintain functionality.
+* **Test Coverage**: Ensure adequate test coverage before refactoring. Add tests for uncovered areas if needed.
+* **Verification**: Run tests after each refactoring step to catch regressions early.
+* **Documentation**: Update documentation when refactoring changes public APIs or behavior.
+* **Code Review**: Significant refactorings should go through code review to ensure correctness and maintainability.
+
+## 2. Layered Architecture
+
+### Layer Separation
+* **Domain Layer**: Contains business logic and domain models. Should be independent of frameworks and external dependencies.
+* **Application Layer**: Contains use cases and application services. Orchestrates domain objects to fulfill use cases.
+* **Infrastructure Layer**: Contains technical implementations (databases, external APIs, file systems). Should depend on domain abstractions.
+* **Presentation Layer**: Contains user interfaces, APIs, and CLI tools. Should depend on application layer, not domain directly.
+
+### Dependency Direction
+* **Dependency Rule**: Dependencies should point inward toward the domain. Outer layers depend on inner layers, never the reverse.
+* **Abstractions**: Use interfaces and abstract base classes to invert dependencies. Infrastructure should implement domain-defined interfaces.
+
+## 3. Pattern Application & Analysis
 * **Tracing**: MANDATORY: Trace every symbol back to its root definition and all usages before refactoring.
-* **Design Patterns**: Use Factory/Singleton for lifecycles, and Strategy/Observer for dynamic logic.
-* **Trade-offs**: Evaluate performance vs. readability vs. speed before major changes.
+* **Design Patterns**:
+  * **Factory**: Use for object creation when construction logic is complex or needs to be abstracted.
+  * **Singleton**: Use sparingly for shared resources (loggers, configuration). Prefer dependency injection over global singletons.
+  * **Strategy**: Use for algorithms that can be interchanged at runtime.
+  * **Observer**: Use for event-driven architectures and decoupled communication.
+  * **Repository**: Use for abstracting data access and enabling testability.
+* **Trade-offs**: Evaluate performance vs. readability vs. speed before major changes. Document significant trade-off decisions.
 
-## 3. System Integrity
+## 4. Code Organization
+
+### Module Structure
+* **Cohesion**: Group related functionality together. Modules should have a single, well-defined purpose.
+* **Coupling**: Minimize dependencies between modules. Prefer loose coupling through well-defined interfaces.
+* **Package Hierarchy**: Organize packages by feature or layer, not by technical type. Use `__init__.py` to expose public APIs.
+
+### Naming Conventions
+* Follow naming conventions defined in [python-style.mdc](mdc:python-style.mdc).
+* **Modules**: Use lowercase with underscores (`user_service.py`, `data_models.py`).
+* **Packages**: Use lowercase, short names (`core`, `api`, `infra`).
+* **Classes**: Use CapWords (`UserService`, `DataModel`).
+* **Functions/Methods**: Use lowercase_with_underscores (`get_user_by_id`, `process_data`).
+* **Constants**: Use UPPERCASE_WITH_UNDERSCORES (`MAX_RETRIES`, `DEFAULT_TIMEOUT`).
+
+## 5. Interface Design
+
+### API Design
+* **Explicit over Implicit**: Make function signatures clear about what they accept and return.
+* **Type Hints**: Follow type hint requirements in [python-style.mdc](mdc:python-style.mdc).
+* **Documentation**: Follow docstring standards in [python-style.mdc](mdc:python-style.mdc).
+* **Error Handling**: Use appropriate exception types. Document what exceptions functions may raise. See [standard-libraries.mdc](mdc:standard-libraries.mdc) for exception handling patterns.
+
+### Abstraction Levels
+* **Appropriate Abstraction**: Create abstractions at the right level—not too high (loses flexibility) or too low (loses clarity).
+* **Interface Segregation**: Keep interfaces focused. Prefer multiple small interfaces over one large interface.
+* **Default Implementations**: Use abstract base classes or protocols to define contracts while allowing default implementations.
+
+## 6. Error Handling & Resilience
+
+### Exception Strategy
+* **Fail Fast**: Validate inputs early and fail with clear error messages.
+* **Exception Hierarchy**: Create custom exception hierarchies that reflect domain concepts. Use [standard-libraries.mdc](mdc:standard-libraries.mdc) for base exception classes.
+* **Error Context**: Include sufficient context in error messages to aid debugging:
+  * Include relevant variable values and state information
+  * Provide actionable error messages that guide users to solutions
+  * Log errors with appropriate log levels (see [standard-libraries.mdc](mdc:standard-libraries.mdc))
+* **Recovery**: Design for graceful degradation when possible. Use circuit breakers for external dependencies.
+* **Exception Types**: Use appropriate exception types:
+  * `ValueError`: Invalid input values or parameters
+  * `TypeError`: Incorrect type passed to function
+  * `KeyError`/`AttributeError`: Missing keys or attributes (prefer explicit checks)
+  * `FileNotFoundError`: Missing files or resources
+  * Custom exceptions: Domain-specific errors that require special handling
+* **Exception Propagation**: Let exceptions propagate to appropriate handlers rather than catching and re-raising unnecessarily.
+* **Error Logging**: Always log exceptions with context before handling or re-raising. Use structured logging for better analysis.
+
+### Validation
+* **Input Validation**: Validate all external inputs at system boundaries (APIs, file inputs, user input).
+* **Type Safety**: Leverage type hints (see [python-style.mdc](mdc:python-style.mdc)) and static analysis tools to catch errors early.
+* **Business Rules**: Encode business rules as explicit validation logic, not implicit assumptions.
+* **Validation Patterns**:
+  * Validate early in function execution
+  * Return clear validation error messages
+  * Use validation functions for complex rules
+  * Consider using validation libraries (e.g., Pydantic) for structured data
+
+### Error Recovery Patterns
+* **Retry Logic**: Implement exponential backoff for transient failures (network, external services).
+* **Fallback Mechanisms**: Provide fallback behavior when primary operations fail (e.g., cached data, default values).
+* **Circuit Breakers**: Use circuit breakers to prevent cascading failures in distributed systems.
+* **Timeout Handling**: Always set timeouts for external calls and handle timeout exceptions appropriately.
+* **Partial Success**: Design operations to handle partial success scenarios gracefully.
+
+## 7. System Integrity
 * **Idempotency**: Ensure automation and infrastructure operations are idempotent.
 * **Verification**: Ensure architecture supports comprehensive testing and edge-case coverage.
+* **Observability**: Design systems to be observable. Include logging, metrics, and tracing capabilities.
+* **Backward Compatibility**: Consider backward compatibility when making breaking changes. Use versioning for APIs.
+
+### Performance Considerations
+* **Premature Optimization**: Avoid premature optimization. Write clear, correct code first, then optimize if needed.
+* **When to Optimize**:
+  * Performance is a stated requirement
+  * Profiling identifies actual bottlenecks
+  * Code is in a hot path (frequently executed)
+  * Performance issues affect user experience
+* **Optimization Strategies**:
+  * Profile before optimizing to identify real bottlenecks
+  * Optimize algorithms and data structures before micro-optimizations
+  * Use caching for expensive computations
+  * Consider lazy evaluation for large datasets
+  * Use appropriate data structures (sets for membership, dicts for lookups)
+* **Performance vs. Readability**: Favor readability unless performance is critical. Document performance-critical code.
+
+## 8. Documentation & Communication
+
+### Documentation Standards
+* **Code as Documentation**: Write self-documenting code through clear naming and structure.
+* **When to Document**:
+  * Public APIs and interfaces (always)
+  * Complex algorithms or business logic
+  * Non-obvious implementation decisions
+  * Workarounds or technical debt
+  * Configuration options and their effects
+* **What to Document**:
+  * **Purpose**: What the code does and why it exists
+  * **Parameters**: Input requirements and constraints
+  * **Returns**: Output format and possible values
+  * **Side Effects**: Any state changes or external interactions
+  * **Exceptions**: What exceptions may be raised and when
+  * **Examples**: Usage examples for complex functions
+* **Documentation Formats**: Follow docstring standards in [python-style.mdc](mdc:python-style.mdc) for code documentation.
+
+### Architecture Documentation
+* **Architecture Decision Records (ADRs)**: Document significant architectural decisions and their rationale:
+  * Context and problem statement
+  * Considered alternatives
+  * Decision and rationale
+  * Consequences and trade-offs
+* **API Documentation**: Keep API documentation up-to-date with code changes:
+  * Document all public functions, classes, and modules
+  * Include usage examples
+  * Document breaking changes in changelogs
+* **System Documentation**: Maintain high-level system documentation:
+  * Architecture diagrams
+  * Data flow diagrams
+  * Component interactions
+  * Deployment procedures
+
+### Communication
+* **Onboarding**: Ensure architecture is understandable to new team members through clear structure and documentation.
+* **Change Communication**: Document breaking changes, migrations, and significant updates clearly.
+* **Code Comments**: Use comments to explain "why" not "what". Let code explain itself through clear naming.

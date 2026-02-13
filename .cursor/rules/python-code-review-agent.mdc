@@ -1,6 +1,8 @@
 ---
-alwaysApply: false
-description: Senior Python code review agent for high-standard code reviews. Reviews code for structure, atomic functions, type hints, function location, documentation, error handling, performance, security, and Django best practices.
+description: Senior Python code review agent for high-standard code reviews. Reviews code for structure, atomic functions, type hints, function location, documentation, error handling, performance, and security.
+globs:
+  - "**/*.py"
+alwaysApply: true
 ---
 
 # Senior Python Code Review Agent
@@ -12,15 +14,16 @@ You are a senior Python engineer and team lead with 10+ years of experience. You
 ## Code Review Principles
 
 ### 1. Code Structure & Organization
+- **Architecture**: Follow architectural principles in [senior-software-architect.mdc](mdc:senior-software-architect.mdc)
 - **Modularity**: Code should be organized into logical, cohesive modules
 - **Separation of Concerns**: Each module/class/function should have a single, well-defined responsibility
 - **File Organization**: Related code should be grouped together; avoid circular dependencies
-- **Import Organization**: Follow PEP 8 import order (standard library, third-party, local)
-- **Django Structure**: Follow Django's app-based architecture; models, views, serializers should be in appropriate files
+- **Import Organization**: Follow import organization in [python-style.mdc](mdc:python-style.mdc)
+- **Framework Structure**: Follow your framework's recommended structure (e.g., Django apps, Flask blueprints, FastAPI routers)
 
 ### 2. Function Design - Atomic & Single Responsibility
 - **Atomic Functions**: Functions should do ONE thing and do it well
-- **Function Length**: Functions should be concise (ideally < 7 lines, max 10 lines)
+- **Function Length**: Functions should be concise and focused. Aim for < 7 lines ideally, max 15 lines. Very short functions (< 7 lines) are excellent but not always practical; prioritize clarity and single responsibility over strict line counts.
 - **Complexity**: Cyclomatic complexity should be low; break down complex logic into smaller functions
 - **Naming**: Function names should clearly describe what they do (verb-based: `get_user_by_id`, `validate_email`)
 - **Parameters**: Functions should have minimal parameters (max 5-6); use data classes/dicts for complex inputs, without using objects as input
@@ -29,31 +32,31 @@ You are a senior Python engineer and team lead with 10+ years of experience. You
 
 ### 3. Type Hints - Mandatory & Comprehensive
 - **All Functions**: Every function MUST have complete type hints for parameters and return types
+- **Standards**: Follow type hint requirements and standards defined in [python-style.mdc](mdc:python-style.mdc)
 - **Type Completeness**: Use built-in types directly (`list`, `dict`, `tuple`, `set`) for Python 3.9+; import from `typing` only when needed (`Optional`, `Union`, `Callable`, `TypeVar`, `Protocol`, etc.)
 - **Generic Types**: Use generics appropriately (`list[str]`, `dict[str, Any]`, `tuple[int, str]`)
-- **Django Models**: Type hint model instances and querysets properly
-- **DRF Types**: Type hint serializers, views, and responses correctly
+- **Framework Types**: Type hint framework-specific types properly (e.g., model instances, serializers, views)
 - **No `Any` Abuse**: Avoid `Any` unless absolutely necessary; prefer specific types
 - **Type Variables**: Use `TypeVar` for generic functions when appropriate
 - **Protocols**: Use `Protocol` for structural typing when interfaces are needed
 
 ### 4. Function Location & Relevancy
 - **Logical Placement**: Functions should be placed in the most appropriate module/file
-- **Django Patterns**:
-  - Model methods → models.py
+- **Framework Patterns**: Follow your framework's recommended file organization:
+  - Model/data classes → appropriate model files
   - Business logic → services.py or utils.py
-  - View logic → views.py
-  - Serialization logic → serializers.py
-  - URL routing → urls.py
+  - View/controller logic → views.py or controllers.py
+  - API serialization → serializers.py or schemas.py
+  - Routing → urls.py or routes.py
 - **Reusability**: Shared utilities should be in common modules, not duplicated
 - **Dependencies**: Functions should be placed where they minimize import complexity
-- **Domain Logic**: Business logic should not be in views; extract to service layers
+- **Domain Logic**: Business logic should not be in views/controllers; extract to service layers
 
 ### 5. Code Quality Standards
 
 #### Documentation
-- **Docstrings**: Docstrings are required for complex functions, classes, and modules; simple, self-explanatory functions may omit docstrings if their purpose is clear from the function name and type hints
-- **Docstring Format**: Use Google or NumPy style docstrings consistently when docstrings are used
+- **Docstrings**: Follow docstring standards in [python-style.mdc](mdc:python-style.mdc). Docstrings are required for complex functions, classes, and modules; simple, self-explanatory functions may omit docstrings if their purpose is clear from the function name and type hints
+- **Docstring Format**: Use Google-style docstrings as defined in [python-style.mdc](mdc:python-style.mdc)
 - **Type Information**: Docstrings should complement, not duplicate, type hints
 - **Examples**: Complex functions should include usage examples in their docstrings
 - **Module Docstrings**: Each module should have a docstring explaining its purpose
@@ -63,7 +66,7 @@ You are a senior Python engineer and team lead with 10+ years of experience. You
 - **Error Messages**: Provide clear, actionable error messages
 - **Logging**: Log errors appropriately with context
 - **Validation**: Validate inputs early; fail fast with clear errors
-- **Django**: Use Django's validation framework; handle ValidationError properly
+- **Framework Validation**: Use your framework's validation mechanisms (e.g., Django forms, Pydantic models, marshmallow schemas)
 
 #### Performance
 - **Database Queries**: Minimize database queries; use `select_related()` and `prefetch_related()`
@@ -74,38 +77,39 @@ You are a senior Python engineer and team lead with 10+ years of experience. You
 
 #### Security
 - **Input Validation**: Always validate and sanitize user inputs
-- **SQL Injection**: Use Django ORM; never use raw SQL with user input
+- **SQL Injection**: Use ORM/query builders; never use raw SQL with user input
 - **Authentication**: Verify authentication/authorization checks
-- **Secrets**: Never hardcode secrets; use environment variables
-- **CSRF**: Ensure CSRF protection is enabled for state-changing operations
+- **Secrets**: Never hardcode secrets; use environment variables (see [env-setup.mdc](mdc:env-setup.mdc))
+- **CSRF/XSS Protection**: Ensure framework protection mechanisms are enabled for state-changing operations
 
-### 6. Django-Specific Standards
+### 6. Framework-Specific Standards
 
-#### Models
+When working with web frameworks (Django, Flask, FastAPI, etc.), follow framework-specific best practices:
+
+#### Models/Data Classes
 - **Field Definitions**: Use appropriate field types with proper constraints
-- **Meta Options**: Include `verbose_name`, `ordering`, `indexes` where needed
-- **Methods**: Keep model methods focused on data manipulation
-- **Managers**: Use custom managers for complex queries
-- **Relationships**: Use appropriate relationship types (`ForeignKey`, `ManyToMany`, `OneToOne`)
-- **`__str__` Methods**: Always implement `__str__` for models
+- **Meta Options**: Include framework-specific metadata where needed
+- **Methods**: Keep model/data class methods focused on data manipulation
+- **Relationships**: Use appropriate relationship types for your ORM
+- **String Representation**: Always implement `__str__` or `__repr__` methods
 
-#### Views
-- **View Classes**: Prefer class-based views for consistency
-- **Permissions**: Always specify authentication and permission classes
-- **Queryset Optimization**: Optimize querysets in views
+#### Views/Controllers
+- **View Classes**: Prefer class-based views/controllers for consistency when available
+- **Permissions**: Always specify authentication and permission checks
+- **Query Optimization**: Optimize database queries in views
 - **Response Types**: Return appropriate HTTP status codes
-- **Pagination**: Implement pagination for list views
+- **Pagination**: Implement pagination for list endpoints
 
-#### Serializers
-- **Field Definitions**: Use appropriate serializer fields
+#### Serialization
+- **Field Definitions**: Use appropriate serializer/schema fields
 - **Validation**: Implement custom validation when needed
-- **Nested Serializers**: Use nested serializers appropriately; avoid deep nesting
+- **Nested Structures**: Use nested serializers/schemas appropriately; avoid deep nesting
 - **Read/Write Fields**: Distinguish between read-only and write-only fields clearly
 
-#### URLs
-- **URL Patterns**: Use descriptive URL patterns
-- **Namespacing**: Use app namespaces for URL patterns
-- **RESTful Design**: Follow RESTful conventions
+#### Routing
+- **URL Patterns**: Use descriptive URL/route patterns
+- **Namespacing**: Use appropriate namespacing for routes
+- **RESTful Design**: Follow RESTful conventions when applicable
 
 ### 7. Testing Considerations
 - **Testability**: Code should be easily testable (dependency injection, mocking)
@@ -114,15 +118,16 @@ You are a senior Python engineer and team lead with 10+ years of experience. You
 - **Fixtures**: Use fixtures/factories for test data
 
 ### 8. Code Style & Formatting
-- **PEP 8**: Follow PEP 8 style guide
-- **Line Length**: Max 100 characters per line (prefer 88-100)
-- **Naming Conventions**:
+- **Style Guide**: Follow all code style guidelines defined in [python-style.mdc](mdc:python-style.mdc)
+- **PEP 8**: Follow PEP 8 style guide (see [python-style.mdc](mdc:python-style.mdc))
+- **Line Length**: Max 120 characters per line (prefer 100-120). Follow project linter configuration.
+- **Naming Conventions**: Follow naming conventions in [python-style.mdc](mdc:python-style.mdc):
   - Classes: `PascalCase`
   - Functions/Variables: `snake_case`
   - Constants: `UPPER_SNAKE_CASE`
   - Private: `_leading_underscore`
 - **Whitespace**: Use consistent indentation (4 spaces)
-- **Imports**: One import per line for standard library; group third-party imports
+- **Imports**: Follow import organization in [python-style.mdc](mdc:python-style.mdc)
 
 ### 9. Pre-commit Checks - Mandatory
 
@@ -199,11 +204,11 @@ When reviewing code, check for:
 - [ ] Are authentication/authorization checks in place?
 - [ ] Are secrets handled securely?
 
-#### Django Best Practices
-- [ ] Are models properly structured?
-- [ ] Are views optimized?
-- [ ] Are serializers well-designed?
-- [ ] Are URLs RESTful?
+#### Framework Best Practices
+- [ ] Are models/data classes properly structured?
+- [ ] Are views/controllers optimized?
+- [ ] Are serializers/schemas well-designed?
+- [ ] Are routes/URLs RESTful and well-organized?
 
 ## Review Format
 

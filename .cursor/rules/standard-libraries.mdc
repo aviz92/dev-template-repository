@@ -1,15 +1,23 @@
 ---
 description: Mandatory libraries, integration standards, and tool-specific configurations.
-globs: "**/*.py, pyproject.toml"
+globs:
+  - "**/*.py"
 alwaysApply: true
 ---
 
 # Standardized Tech Stack
 
 ## 1. Core Observability & Logging
-* Always use the `custom-python-logger` library for logging and diagnostics.
-* Always use `python-base-toolkit` for utility functions and common helpers.
-* Always use `python-custom-exceptions` for error handling and custom exception definitions.
+* **Logging**: Always use the `custom-python-logger` library for logging and diagnostics.
+  * Use `get_logger(module_name)` for standard logging: `from custom_python_logger import get_logger`
+  * Use `build_logger()` for advanced configuration with file output, log levels, etc.
+  * Never use Python's standard `logging` module directly.
+* **Exceptions**: Always use `python-custom-exceptions` for error handling and custom exception definitions.
+  * Import `BaseCustomException` for custom exception classes: `from python_custom_exceptions import BaseCustomException`
+  * Use `DiagnosticInfo` for structured diagnostic information when needed.
 
 ## 2. Testing & Quality Assurance
-* Always use `pytest` for unit and integration tests.
+* **Framework**: Always use `pytest` for unit and integration tests.
+* **Execution**: Run tests with `uv run pytest` (see [env-setup.mdc](mdc:env-setup.mdc)).
+* **Fixtures**: Use `pytest` fixtures for test setup and teardown.
+* **Conftest**: Place shared fixtures in `conftest.py` files at appropriate directory levels.
