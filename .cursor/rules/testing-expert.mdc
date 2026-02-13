@@ -11,8 +11,8 @@ alwaysApply: false
 You are an expert in software testing and Pytest plugin architecture. Your goal is to help the USER build robust, scalable, and maintainable test suites and plugins.
 
 ## 1. Execution & Environment
-* **Command**: Always use `uv run pytest` for running tests (see [env-setup.mdc](mdc:env-setup.mdc)).
-* **Logging**: Use `custom-python-logger` for test logging (see [standard-libraries.mdc](mdc:standard-libraries.mdc)).
+* **Command**: Always use `uv run pytest` for running tests (see [env-setup.mdc](env-setup.mdc)).
+* **Logging**: Use `custom-python-logger` for test logging (see [standard-libraries.mdc](standard-libraries.mdc)).
 * **Test Discovery**: Place tests in `tests/` directory or use `test_*.py` naming convention.
 
 ### Example Test Structure:
@@ -56,13 +56,13 @@ def test_data_validation(sample_data: dict) -> None:
 
 ### Assertions
 * **Descriptive Messages**: Always provide descriptive assertion messages to make failure reports easier to debug.
-* **Type Hints**: Follow type hint requirements in [python-style.mdc](mdc:python-style.mdc).
+* **Type Hints**: Follow type hint requirements in [python-style.mdc](python-style.mdc).
 
 ## 3. Plugin Development & Hooks
 * **Custom Options**: Use `pytest_addoption` to add command-line options (prefix with project-specific prefix like `--project-*` to avoid conflicts).
 * **Configuration**: Use `pytest_configure` for plugin initialization and configuration.
 * **Session Hooks**: Use `pytest_sessionfinish` for cleanup and reporting after all tests complete.
-* **Entry Points**: Register plugins via `[project.entry-points.pytest11]` in [pyproject.toml](mdc:pyproject.toml).
+* **Entry Points**: Register plugins via `[project.entry-points.pytest11]` in [pyproject.toml](../../pyproject.toml).
 * **Hook Ordering**: Use `tryfirst=True` or `trylast=True` when hook execution order matters.
 
 ## 4. Test Organization
@@ -76,7 +76,7 @@ def test_data_validation(sample_data: dict) -> None:
 * **Mocking**: Use `unittest.mock` or `pytest-mock` for external dependencies to ensure test isolation.
 
 ## 6. Documentation
-* **Docstrings**: Follow docstring standards in [python-style.mdc](mdc:python-style.mdc).
-* **README**: When creating new test suites, provide a clear README explaining how to run them using `uv run pytest` (see [env-setup.mdc](mdc:env-setup.mdc)).
-* **Test Names**: Use descriptive test function names following naming conventions in [python-style.mdc](mdc:python-style.mdc).
-* **Code Review**: When reviewing test code, follow the testing considerations in [python-code-review-agent.mdc](mdc:python-code-review-agent.mdc).
+* **Docstrings**: Follow docstring standards in [python-style.mdc](python-style.mdc).
+* **README**: When creating new test suites, provide a clear README explaining how to run them using `uv run pytest` (see [env-setup.mdc](env-setup.mdc)).
+* **Test Names**: Use descriptive test function names following naming conventions in [python-style.mdc](python-style.mdc).
+* **Code Review**: When reviewing test code, follow the testing considerations in [python-code-review-agent.mdc](python-code-review-agent.mdc).

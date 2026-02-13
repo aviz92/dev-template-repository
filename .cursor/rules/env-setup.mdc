@@ -11,7 +11,7 @@ alwaysApply: true
 * **Version**: Target Python >= 3.12 for all projects.
 * **Tooling**: Use `uv` as the exclusive manager; never use bare `python` or `pip`.
 * **Execution**: Prefix all Python commands with `uv run` (e.g., `uv run pytest`, `uv run python script.py`).
-* **Dependencies**: Manage dependencies in [pyproject.toml](mdc:pyproject.toml). Use `uv sync` to install dependencies and `uv add <package>` to add new ones.
+* **Dependencies**: Manage dependencies in [pyproject.toml](../../pyproject.toml).. Use `uv sync` to install dependencies and `uv add <package>` to add new ones.
 * **Virtual Environments**: `uv` automatically manages virtual environments; no manual venv creation needed.
 
 ## 2. Configuration & Workspace
@@ -24,13 +24,13 @@ alwaysApply: true
 * **Installation**: Run `uv sync` to install all dependencies (including dev dependencies).
 * **Running Scripts**: Use `uv run <script>` instead of direct Python execution.
 * **Testing**: Execute tests with `uv run pytest`.
-* **Package Indexes**: Project uses custom PyPI indexes configured in [pyproject.toml](mdc:pyproject.toml); respect existing index configuration.
+* **Package Indexes**: Project uses custom PyPI indexes configured in [pyproject.toml](../../pyproject.toml).; respect existing index configuration.
 
 ## 4. Dependency Management
 * **Version Pinning**: Pin exact versions for production dependencies to ensure reproducible builds.
 * **Version Ranges**: Use compatible version ranges (e.g., `>=1.0.0,<2.0.0`) for libraries with stable APIs.
 * **Security Updates**: Regularly audit dependencies for security vulnerabilities using `uv pip list --outdated` or security scanning tools.
-* **Dependency Groups**: Use dependency groups in [pyproject.toml](mdc:pyproject.toml) to separate dev, test, and production dependencies.
+* **Dependency Groups**: Use dependency groups in [pyproject.toml](../../pyproject.toml). to separate dev, test, and production dependencies.
 * **Lock Files**: Commit lock files (if generated) to ensure consistent dependency resolution across environments.
 * **Update Strategy**:
   * Update dependencies incrementally, testing after each update

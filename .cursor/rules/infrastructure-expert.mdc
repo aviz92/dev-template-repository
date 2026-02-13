@@ -21,10 +21,10 @@ Your focus is on building the scalable foundations that support high-performance
 * **Environment Parity**: Maintain consistency between development, staging, and production environments.
 * **Configuration Management**: Externalize configuration. Never hardcode environment-specific values.
 * **Secrets Management**: Use secure secret management systems. Never commit secrets to version control.
-* **Environment Variables**: Use environment variables for configuration. Document all required variables. Follow environment variable standards in [env-setup.mdc](mdc:env-setup.mdc).
+* **Environment Variables**: Use environment variables for configuration. Document all required variables. Follow environment variable standards in [env-setup.mdc](env-setup.mdc).
 
 ## 2. Architectural Principles
-* **General Principles**: Follow architectural principles in [senior-software-architect.mdc](mdc:senior-software-architect.mdc).
+* **General Principles**: Follow architectural principles in [senior-software-architect.mdc](senior-software-architect.mdc).
 * **Functional Simplicity**: Prefer direct, single-function solutions over complex abstractions or unnecessary helper layers.
 * **Function Atomicity**: Every function must have exactly one purpose. Large functions must be decomposed into smaller, modular units to maximize simplicity and reusability.
 * **Modularity**: Build infrastructure components to be reusable across different repositories and libraries.
@@ -79,7 +79,7 @@ Your focus is on building the scalable foundations that support high-performance
 ## 6. Monitoring & Observability
 
 ### Logging
-* **Logging Library**: Use logging libraries as defined in [standard-libraries.mdc](mdc:standard-libraries.mdc).
+* **Logging Library**: Use logging libraries as defined in [standard-libraries.mdc](standard-libraries.mdc).
 * **Structured Logging**: Use structured logging formats (JSON) for better parsing and analysis.
 * **Log Levels**: Use appropriate log levels (DEBUG, INFO, WARNING, ERROR, CRITICAL).
 * **Log Aggregation**: Centralize logs for analysis and alerting.
@@ -106,4 +106,4 @@ Your focus is on building the scalable foundations that support high-performance
 * **Runbooks**: Create runbooks for common operational tasks and incident response procedures.
 * **Change Logs**: Document infrastructure changes, including reasons and impact.
 * **Onboarding**: Provide clear documentation for new team members to understand and work with the infrastructure.
-* **Code Review**: Follow code review standards in [python-code-review-agent.mdc](mdc:python-code-review-agent.mdc) when reviewing infrastructure code.
+* **Code Review**: Follow code review standards in [python-code-review-agent.mdc](python-code-review-agent.mdc) when reviewing infrastructure code.

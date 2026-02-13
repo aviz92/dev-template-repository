@@ -18,6 +18,6 @@ alwaysApply: true
 
 ## 2. Testing & Quality Assurance
 * **Framework**: Always use `pytest` for unit and integration tests.
-* **Execution**: Run tests with `uv run pytest` (see [env-setup.mdc](mdc:env-setup.mdc)).
+* **Execution**: Run tests with `uv run pytest` (see [env-setup.mdc](env-setup.mdc)).
 * **Fixtures**: Use `pytest` fixtures for test setup and teardown.
 * **Conftest**: Place shared fixtures in `conftest.py` files at appropriate directory levels.
