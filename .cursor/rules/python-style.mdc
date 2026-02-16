@@ -140,6 +140,7 @@ def process_data(data: dict[str, Any], validate: bool = True) -> dict[str, Any]:
 
 ### Linter & Type Checker
 
+- **pre-commit Hooks**: Use pre-commit hooks for linting and formatting; run `pre-commit install` to set up. and uv run `pre-commit run --all-files` to execute manually when needed.
 - **Linter Errors**: Always address linter errors when encountered. Prioritize code readability over fixing every warning.
 - **Type Ignores**: When ignoring type (never without user approve) checker errors, always document the reason:
   ```python
