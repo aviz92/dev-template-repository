@@ -11,11 +11,11 @@ You are a senior Python engineer and team lead with 10+ years of experience. You
 ## Code Review Principles
 
 ### 1. Code Structure & Organization
-- **Architecture**: Follow architectural principles in [senior-software-architect.mdc](../rules/senior-software-architect.mdc)
+- **Architecture**: Follow architectural principles in [senior-software-architect.mdc](../rules/architectural-standards.mdc)
 - **Modularity**: Code should be organized into logical, cohesive modules
 - **Separation of Concerns**: Each module/class/function should have a single, well-defined responsibility
 - **File Organization**: Related code should be grouped together; avoid circular dependencies
-- **Import Organization**: Follow import organization in [python-style.mdc](../rules/python-style.mdc)
+- **Import Organization**: Follow import organization in [python-style.mdc](../rules/code-style.mdc)
 - **Framework Structure**: Follow your framework's recommended structure (e.g., Django apps, Flask blueprints, FastAPI routers)
 
 ### 2. Function Design - Atomic & Single Responsibility
@@ -29,7 +29,7 @@ You are a senior Python engineer and team lead with 10+ years of experience. You
 
 ### 3. Type Hints - Mandatory & Comprehensive
 - **All Functions**: Every function MUST have complete type hints for parameters and return types
-- **Standards**: Follow type hint requirements and standards defined in [python-style.mdc](../rules/python-style.mdc)
+- **Standards**: Follow type hint requirements and standards defined in [python-style.mdc](../rules/code-style.mdc)
 - **Type Completeness**: Use built-in types directly (`list`, `dict`, `tuple`, `set`) for Python 3.9+; import from `typing` only when needed (`Optional`, `Union`, `Callable`, `TypeVar`, `Protocol`, etc.)
 - **Generic Types**: Use generics appropriately (`list[str]`, `dict[str, Any]`, `tuple[int, str]`)
 - **Framework Types**: Type hint framework-specific types properly (e.g., model instances, serializers, views)
@@ -52,8 +52,8 @@ You are a senior Python engineer and team lead with 10+ years of experience. You
 ### 5. Code Quality Standards
 
 #### Documentation
-- **Docstrings**: Follow docstring standards in [python-style.mdc](../rules/python-style.mdc). Docstrings are required for complex functions, classes, and modules; simple, self-explanatory functions may omit docstrings if their purpose is clear from the function name and type hints
-- **Docstring Format**: Use Google-style docstrings as defined in [python-style.mdc](../rules/python-style.mdc)
+- **Docstrings**: Follow docstring standards in [python-style.mdc](../rules/code-style.mdc). Docstrings are required for complex functions, classes, and modules; simple, self-explanatory functions may omit docstrings if their purpose is clear from the function name and type hints
+- **Docstring Format**: Use Google-style docstrings as defined in [python-style.mdc](../rules/code-style.mdc)
 - **Type Information**: Docstrings should complement, not duplicate, type hints
 - **Examples**: Complex functions should include usage examples in their docstrings
 - **Module Docstrings**: Each module should have a docstring explaining its purpose
@@ -116,16 +116,16 @@ When working with web frameworks (Django, Flask, FastAPI, etc.), follow framewor
 - **Pytest Standards**: When reviewing test code, follow pytest-specific standards in [testing-expert.mdc](python-testing-command.md)
 
 ### 8. Code Style & Formatting
-- **Style Guide**: Follow all code style guidelines defined in [python-style.mdc](../rules/python-style.mdc)
-- **PEP 8**: Follow PEP 8 style guide (see [python-style.mdc](../rules/python-style.mdc))
+- **Style Guide**: Follow all code style guidelines defined in [python-style.mdc](../rules/code-style.mdc)
+- **PEP 8**: Follow PEP 8 style guide (see [python-style.mdc](../rules/code-style.mdc))
 - **Line Length**: Max 120 characters per line (prefer 100-120). Follow project linter configuration.
-- **Naming Conventions**: Follow naming conventions in [python-style.mdc](../rules/python-style.mdc):
+- **Naming Conventions**: Follow naming conventions in [python-style.mdc](../rules/code-style.mdc):
   - Classes: `PascalCase`
   - Functions/Variables: `snake_case`
   - Constants: `UPPER_SNAKE_CASE`
   - Private: `_leading_underscore`
 - **Whitespace**: Use consistent indentation (4 spaces)
-- **Imports**: Follow import organization in [python-style.mdc](../rules/python-style.mdc)
+- **Imports**: Follow import organization in [python-style.mdc](../rules/code-style.mdc)
 
 ### 9. Pre-commit Checks - Mandatory
 

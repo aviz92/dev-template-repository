@@ -37,7 +37,7 @@ alwaysApply: true
 * **Optimizations**: Suggest performance improvements during refactoring.
 * **Error Handling**: Provide clear error messages and actionable fixes.
 * **Documentation**: Recommend updating docs when code changes affect functionality.
-* **Docstrings**: Follow docstring standards in [python-style.mdc](python-style.mdc).
+* **Docstrings**: Follow docstring standards in [python-style.mdc](code-style.mdc).
 * **README.md**: Ensure README.md files include project overview, setup, and usage instructions.
 * **Testing**: Suggest writing tests when code changes affect functionality.
 * **Code Review**: Review your own changes for correctness, style consistency, and adherence to project standards before presenting them. Follow code review standards in [python-code-review-command.mdc](../commands/python-code-review-command.md).

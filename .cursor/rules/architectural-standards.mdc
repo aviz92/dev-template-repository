@@ -5,7 +5,7 @@ globs:
 alwaysApply: true
 ---
 
-# Role: Senior Software Architect
+# Architectural Standards
 
 ## 1. Core Principles
 * **SOLID**: Strictly adhere to Single Responsibility and Dependency Inversion.
@@ -54,7 +54,7 @@ alwaysApply: true
 * **Package Hierarchy**: Organize packages by feature or layer, not by technical type. Use `__init__.py` to expose public APIs.
 
 ### Naming Conventions
-* Follow naming conventions defined in [python-style.mdc](python-style.mdc).
+* Follow naming conventions defined in [python-style.mdc](code-style.mdc).
 * **Modules**: Use lowercase with underscores (`user_service.py`, `data_models.py`).
 * **Packages**: Use lowercase, short names (`core`, `api`, `infra`).
 * **Classes**: Use CapWords (`UserService`, `DataModel`).
@@ -65,8 +65,8 @@ alwaysApply: true
 
 ### API Design
 * **Explicit over Implicit**: Make function signatures clear about what they accept and return.
-* **Type Hints**: Follow type hint requirements in [python-style.mdc](python-style.mdc).
-* **Documentation**: Follow docstring standards in [python-style.mdc](python-style.mdc).
+* **Type Hints**: Follow type hint requirements in [python-style.mdc](code-style.mdc).
+* **Documentation**: Follow docstring standards in [python-style.mdc](code-style.mdc).
 * **Error Handling**: Use appropriate exception types. Document what exceptions functions may raise. See [standard-libraries.mdc](standard-libraries.mdc) for exception handling patterns.
 
 ### Abstraction Levels
@@ -95,7 +95,7 @@ alwaysApply: true
 
 ### Validation
 * **Input Validation**: Validate all external inputs at system boundaries (APIs, file inputs, user input).
-* **Type Safety**: Leverage type hints (see [python-style.mdc](python-style.mdc)) and static analysis tools to catch errors early.
+* **Type Safety**: Leverage type hints (see [python-style.mdc](code-style.mdc)) and static analysis tools to catch errors early.
 * **Business Rules**: Encode business rules as explicit validation logic, not implicit assumptions.
 * **Validation Patterns**:
   * Validate early in function execution
@@ -148,7 +148,7 @@ alwaysApply: true
   * **Side Effects**: Any state changes or external interactions
   * **Exceptions**: What exceptions may be raised and when
   * **Examples**: Usage examples for complex functions
-* **Documentation Formats**: Follow docstring standards in [python-style.mdc](python-style.mdc) for code documentation.
+* **Documentation Formats**: Follow docstring standards in [python-style.mdc](code-style.mdc) for code documentation.
 
 ### Architecture Documentation
 * **Architecture Decision Records (ADRs)**: Document significant architectural decisions and their rationale:

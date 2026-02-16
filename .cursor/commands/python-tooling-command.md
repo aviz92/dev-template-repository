@@ -65,7 +65,7 @@ if __name__ == "__main__":
 * **Error Handling**: Implement consistent error handling patterns. Use context managers for resource cleanup. See [standard-libraries.mdc](../rules/standard-libraries.mdc) for exception handling standards.
 * **Logging**: Use logging libraries as defined in [standard-libraries.mdc](../rules/standard-libraries.mdc).
 * **Version Management**: Use `importlib.metadata.version()` or project-specific version utilities to get package version.
-* **Type Hints**: Follow type hint requirements in [python-style.mdc](../rules/python-style.mdc).
+* **Type Hints**: Follow type hint requirements in [python-style.mdc](../rules/code-style.mdc).
 
 ## 3. Common Patterns
 * **Help Text**: Provide clear, descriptive help text for all command-line arguments.

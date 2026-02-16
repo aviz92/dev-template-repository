@@ -51,7 +51,7 @@ def test_data_validation(sample_data: dict) -> None:
 
 ### Assertions
 * **Descriptive Messages**: Always provide descriptive assertion messages to make failure reports easier to debug.
-* **Type Hints**: Follow type hint requirements in [python-style.mdc](../rules/python-style.mdc).
+* **Type Hints**: Follow type hint requirements in [python-style.mdc](../rules/code-style.mdc).
 
 ## 3. Plugin Development & Hooks
 * **Custom Options**: Use `pytest_addoption` to add command-line options (prefix with project-specific prefix like `--project-*` to avoid conflicts).
@@ -73,7 +73,7 @@ def test_data_validation(sample_data: dict) -> None:
 * **Mocking**: Use `unittest.mock` or `pytest-mock` for external dependencies to ensure test isolation.
 
 ## 6. Documentation
-* **Docstrings**: Follow docstring standards in [python-style.mdc](../rules/python-style.mdc).
+* **Docstrings**: Follow docstring standards in [python-style.mdc](../rules/code-style.mdc).
 * **README**: When creating new test suites, provide a clear README explaining how to run them using `uv run pytest` (see [env-setup.mdc](../rules/env-setup.mdc)).
-* **Test Names**: Use descriptive test function names following naming conventions in [python-style.mdc](../rules/python-style.mdc).
+* **Test Names**: Use descriptive test function names following naming conventions in [python-style.mdc](../rules/code-style.mdc).
 * **Code Review**: When reviewing test code, follow the testing considerations in [python-code-review-command.mdc](python-code-review-command.md).
