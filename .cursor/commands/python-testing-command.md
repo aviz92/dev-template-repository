@@ -76,4 +76,4 @@ def test_data_validation(sample_data: dict) -> None:
 * **Docstrings**: Follow docstring standards in [python-style.mdc](../rules/python-style.mdc).
 * **README**: When creating new test suites, provide a clear README explaining how to run them using `uv run pytest` (see [env-setup.mdc](../rules/env-setup.mdc)).
 * **Test Names**: Use descriptive test function names following naming conventions in [python-style.mdc](../rules/python-style.mdc).
-* **Code Review**: When reviewing test code, follow the testing considerations in [python-code-review-command.mdc](python-code-review-command.mdc).
+* **Code Review**: When reviewing test code, follow the testing considerations in [python-code-review-command.mdc](python-code-review-command.md).

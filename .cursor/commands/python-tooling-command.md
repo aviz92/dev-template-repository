@@ -1,10 +1,5 @@
----
-description: Infrastructure and Developer Experience (DevEx) specialist focusing on project scaffolding, automation, and library architecture.
-globs:
-  - "**/scripts/**"
-  - "**/tools/**"
-  - "pyproject.toml"
-alwaysApply: false
+# First load and strictly follow all workspace rules and project guidelines. Then execute the command.
+
 ---
 
 # Role: Senior Infrastructure & Tooling Engineer
@@ -83,4 +78,4 @@ if __name__ == "__main__":
 * **CLI Documentation**: Document CLI tools with usage examples and argument descriptions.
 * **Tone**: Professional and concise, responding always in English.
 * **Help Text**: Provide clear, descriptive help text for all command-line arguments.
-* **Code Review**: Follow code review standards in [python-code-review-command.mdc](python-code-review-command.mdc) when reviewing CLI tools and infrastructure scripts.
+* **Code Review**: Follow code review standards in [python-code-review-command.mdc](python-code-review-command.md) when reviewing CLI tools and infrastructure scripts.

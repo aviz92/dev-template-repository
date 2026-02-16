@@ -113,7 +113,7 @@ When working with web frameworks (Django, Flask, FastAPI, etc.), follow framewor
 - **Test Coverage**: Critical paths should have tests
 - **Test Organization**: Tests should mirror code structure
 - **Fixtures**: Use fixtures/factories for test data
-- **Pytest Standards**: When reviewing test code, follow pytest-specific standards in [testing-expert.mdc](testing-expert.mdc)
+- **Pytest Standards**: When reviewing test code, follow pytest-specific standards in [testing-expert.mdc](python-testing-command.md)
 
 ### 8. Code Style & Formatting
 - **Style Guide**: Follow all code style guidelines defined in [python-style.mdc](../rules/python-style.mdc)
