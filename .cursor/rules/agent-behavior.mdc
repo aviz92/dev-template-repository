@@ -40,7 +40,7 @@ alwaysApply: true
 * **Docstrings**: Follow docstring standards in [python-style.mdc](python-style.mdc).
 * **README.md**: Ensure README.md files include project overview, setup, and usage instructions.
 * **Testing**: Suggest writing tests when code changes affect functionality.
-* **Code Review**: Review your own changes for correctness, style consistency, and adherence to project standards before presenting them. Follow code review standards in [python-code-review-agent.mdc](python-code-review-agent.mdc).
+* **Code Review**: Review your own changes for correctness, style consistency, and adherence to project standards before presenting them. Follow code review standards in [python-code-review-command.mdc](../commands/python-code-review-command.mdc).
 
 ## 6. Boundaries & Safety
 * **Destruction**: Never use `rm` or destructive commands; suggest moving files to `temp/`.

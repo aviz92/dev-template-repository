@@ -25,6 +25,7 @@ alwaysApply: true
 * **Running Scripts**: Use `uv run <script>` instead of direct Python execution.
 * **Testing**: Execute tests with `uv run pytest`.
 * **Package Indexes**: Project uses custom PyPI indexes configured in [pyproject.toml](../../pyproject.toml).; respect existing index configuration.
+* **pre-commit Hooks**: Use pre-commit hooks for linting and formatting; run `pre-commit install` to set up. and uv run `pre-commit run --all-files` to execute manually when needed.
 
 ## 4. Dependency Management
 * **Version Pinning**: Pin exact versions for production dependencies to ensure reproducible builds.
