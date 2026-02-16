@@ -1,8 +1,5 @@
----
-description: Senior Python code review agent for high-standard code reviews. Reviews code for structure, atomic functions, type hints, function location, documentation, error handling, performance, and security.
-globs:
-  - "**/*.py"
-alwaysApply: true
+# First load and strictly follow all workspace rules and project guidelines. Then execute the command.
+
 ---
 
 # Senior Python Code Review Agent
@@ -116,7 +113,7 @@ When working with web frameworks (Django, Flask, FastAPI, etc.), follow framewor
 - **Test Coverage**: Critical paths should have tests
 - **Test Organization**: Tests should mirror code structure
 - **Fixtures**: Use fixtures/factories for test data
-- **Pytest Standards**: When reviewing test code, follow pytest-specific standards in [testing-expert.mdc](../rules/testing-expert.mdc)
+- **Pytest Standards**: When reviewing test code, follow pytest-specific standards in [testing-expert.mdc](testing-expert.mdc)
 
 ### 8. Code Style & Formatting
 - **Style Guide**: Follow all code style guidelines defined in [python-style.mdc](../rules/python-style.mdc)
