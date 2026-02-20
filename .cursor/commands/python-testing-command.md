@@ -73,6 +73,7 @@ def test_data_validation(sample_data: dict) -> None:
 * **Conftest Files**: Place shared fixtures in `conftest.py` files at appropriate directory levels.
   * prefer not to add fixtures to `conftest.py` if they are only used by a single test module or class to avoid unnecessary global scope.
   * prefer not `pytest_addoption` in the root `conftest.py` to avoid global options that affect all tests, if the option is truly global and needed across all test modules, then it means that need to be in the root `conftest.py`, but if the option is only relevant to a specific subset of tests, it should be added in a `conftest.py` located in the relevant subdirectory to limit its scope and avoid unintended side effects on unrelated tests.
+  * use module-level conftest.py file if need to share fixtures across multiple test modules in the same directory, this allows for better organization and avoids cluttering the root conftest.py with fixtures that are not relevant to all tests.
 * **Test Classes**: Use test classes to group related tests and share fixtures via class-scoped fixtures.
 * **Test Modules**: Keep test modules focused on a single component or feature area.
 
@@ -85,3 +86,6 @@ def test_data_validation(sample_data: dict) -> None:
 * **Docstrings**: Follow docstring standards in [python-style.mdc](../rules/code-style.mdc).
 * **Test Names**: Use descriptive test function names following naming conventions in [python-style.mdc](../rules/code-style.mdc).
 * **Code Review**: When reviewing test code, follow the testing considerations in [python-code-review-command.mdc](python-code-review-command.md).
+
+### 7. Pre-commit Checks - Mandatory
+- Always ensure that all code passes pre-commit checks before review approval. follow the [pre-commit.mdc](../rules/pre-commit.mdc) guidelines for configuration and usage.
