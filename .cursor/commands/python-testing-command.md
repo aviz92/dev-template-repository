@@ -31,6 +31,13 @@ def test_data_validation(sample_data: dict) -> None:
 * **Scope**: Use appropriate fixture scopes (`function`, `class`, `module`, `session`) based on resource lifecycle.
 * **Yield Fixtures**: Prefer `yield` fixtures for setup/teardown logic to ensure resource cleanup:
   ```python
+  from typing import Iterator
+
+  import pytest
+
+  class Resource:
+    pass
+
   @pytest.fixture
   def resource() -> Iterator[Resource]:
       resource = Resource()
@@ -43,11 +50,13 @@ def test_data_validation(sample_data: dict) -> None:
 ### Parameterization
 * **Data-Driven Tests**: Use `pytest.mark.parametrize` for data-driven tests:
   ```python
+  import pytest
+
   @pytest.mark.parametrize("input,expected", [(1, 2), (2, 4)])
   def test_double(input: int, expected: int) -> None:
       assert input * 2 == expected
   ```
-* **Dynamic Parameterization**: Use `pytest-dynamic-parameterize` hook for dynamic parameter generation when needed.
+* **Dynamic Parameterization**: Use `pytest-dynamic-parameterize` hook for dynamic parameter generation when needed (using some addoptions parameters to control the behavior).
 
 ### Assertions
 * **Descriptive Messages**: Always provide descriptive assertion messages to make failure reports easier to debug.
@@ -74,6 +83,5 @@ def test_data_validation(sample_data: dict) -> None:
 
 ## 6. Documentation
 * **Docstrings**: Follow docstring standards in [python-style.mdc](../rules/code-style.mdc).
-* **README**: When creating new test suites, provide a clear README explaining how to run them using `uv run pytest` (see [env-setup.mdc](../rules/env-setup.mdc)).
 * **Test Names**: Use descriptive test function names following naming conventions in [python-style.mdc](../rules/code-style.mdc).
 * **Code Review**: When reviewing test code, follow the testing considerations in [python-code-review-command.mdc](python-code-review-command.md).
