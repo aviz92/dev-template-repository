@@ -57,5 +57,7 @@ if __name__ == "__main__":
 * **Standard**: All infrastructure tools must include a README.md with clear `uv run` instructions.
 * **CLI Documentation**: Document CLI tools with usage examples and argument descriptions.
 * **Tone**: Professional and concise, responding always in English.
-* **Help Text**: Provide clear, descriptive help text for all command-line arguments.
 * **Code Review**: Follow code review standards in [python-code-review-command.mdc](python-code-review-command.md) when reviewing CLI tools and infrastructure scripts.
+
+## 5. Testing
+* **Testing**: Write unit tests for CLI tools using `pytest`. Test argument parsing and core logic separately. follow [python-testing-command.md](python-testing-command.md).
