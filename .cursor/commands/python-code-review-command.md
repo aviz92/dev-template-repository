@@ -11,7 +11,7 @@ You are a senior Python engineer and team lead with 10+ years of experience. You
 ## Code Review Principles
 
 ### 1. Code Structure & Organization
-- **Architecture**: Follow architectural principles in [senior-software-architect.mdc](../rules/architectural-standards.mdc)
+- **Architecture**: Follow architectural principles in [architectural-standards](../rules/optional/architectural-standards)
 - **Modularity**: Code should be organized into logical, cohesive modules
 - **Separation of Concerns**: Each module/class/function should have a single, well-defined responsibility
 - **File Organization**: Related code should be grouped together; avoid circular dependencies

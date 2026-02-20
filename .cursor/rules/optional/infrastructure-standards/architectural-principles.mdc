@@ -6,7 +6,6 @@ alwaysApply: false
 ---
 
 ## Architectural Principles
-* **General Principles**: Follow architectural principles in [senior-software-architect.mdc](architectural-standards.mdc).
 * **Functional Simplicity**: Prefer direct, single-function solutions over complex abstractions or unnecessary helper layers.
 * **Function Atomicity**: Every function must have exactly one purpose. Large functions must be decomposed into smaller, modular units to maximize simplicity and reusability.
 * **Modularity**: Build infrastructure components to be reusable across different repositories and libraries.
