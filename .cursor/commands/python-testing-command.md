@@ -87,5 +87,5 @@ def test_data_validation(sample_data: dict) -> None:
 * **Test Names**: Use descriptive test function names following naming conventions in [python-style.mdc](../rules/code-style.mdc).
 * **Code Review**: When reviewing test code, follow the testing considerations in [python-code-review-command.mdc](python-code-review-command.md).
 
-### 7. Pre-commit Checks - Mandatory
+### 7. Linting & Formatting - Mandatory
 - Always ensure that all code passes pre-commit checks before review approval. follow the [pre-commit.mdc](../rules/pre-commit.mdc) guidelines for configuration and usage.

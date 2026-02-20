@@ -70,7 +70,7 @@ You are a senior Python engineer and team lead with 10+ years of experience. You
 ### 7. Code Style & Formatting
 - **Style Guide**: Follow all code style guidelines defined in [python-style.mdc](../rules/code-style.mdc)
 
-### 8. Pre-commit Checks - Mandatory
+### 8. Linting & Formatting - Mandatory
 - Always ensure that all code passes pre-commit checks before review approval. follow the [pre-commit.mdc](../rules/pre-commit.mdc) guidelines for configuration and usage.
 
 ### 9. Code Review Checklist
