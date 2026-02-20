@@ -26,141 +26,54 @@ You are a senior Python engineer and team lead with 10+ years of experience. You
 - **Parameters**: Functions should have minimal parameters (max 5-6); use data classes/dicts for complex inputs, without using objects as input
 - **Side Effects**: Functions should have minimal side effects; prefer pure functions when possible
 - **Return Values**: Functions should return consistent types; avoid returning `None` when possible (use Optional or raise exceptions)
+- **Constants**: Avoid magic numbers/strings; use constants or enums instead
 
 ### 3. Type Hints - Mandatory & Comprehensive
 - **All Functions**: Every function MUST have complete type hints for parameters and return types
 - **Standards**: Follow type hint requirements and standards defined in [python-style.mdc](../rules/code-style.mdc)
-- **Type Completeness**: Use built-in types directly (`list`, `dict`, `tuple`, `set`) for Python 3.9+; import from `typing` only when needed (`Optional`, `Union`, `Callable`, `TypeVar`, `Protocol`, etc.)
+- **Type Completeness**: Use built-in types directly (`list`, `dict`, `tuple`, `set`) for Python 3.12+; import from `typing` only when needed
 - **Generic Types**: Use generics appropriately (`list[str]`, `dict[str, Any]`, `tuple[int, str]`)
-- **Framework Types**: Type hint framework-specific types properly (e.g., model instances, serializers, views)
 - **No `Any` Abuse**: Avoid `Any` unless absolutely necessary; prefer specific types
 - **Type Variables**: Use `TypeVar` for generic functions when appropriate
-- **Protocols**: Use `Protocol` for structural typing when interfaces are needed
 
 ### 4. Function Location & Relevancy
 - **Logical Placement**: Functions should be placed in the most appropriate module/file
-- **Framework Patterns**: Follow your framework's recommended file organization:
-  - Model/data classes → appropriate model files
-  - Business logic → services.py or utils.py
-  - View/controller logic → views.py or controllers.py
-  - API serialization → serializers.py or schemas.py
-  - Routing → urls.py or routes.py
 - **Reusability**: Shared utilities should be in common modules, not duplicated
 - **Dependencies**: Functions should be placed where they minimize import complexity
 - **Domain Logic**: Business logic should not be in views/controllers; extract to service layers
 
 ### 5. Code Quality Standards
-
-#### Documentation
-- **Docstrings**: Follow docstring standards in [python-style.mdc](../rules/code-style.mdc). Docstrings are required for complex functions, classes, and modules; simple, self-explanatory functions may omit docstrings if their purpose is clear from the function name and type hints
-- **Docstring Format**: Use Google-style docstrings as defined in [python-style.mdc](../rules/code-style.mdc)
-- **Type Information**: Docstrings should complement, not duplicate, type hints
-- **Examples**: Complex functions should include usage examples in their docstrings
-- **Module Docstrings**: Each module should have a docstring explaining its purpose
-
 #### Error Handling
 - **Exception Handling**: Use specific exceptions, not bare `except:`
 - **Error Messages**: Provide clear, actionable error messages
 - **Logging**: Log errors appropriately with context. Follow logging standards in [standard-libraries.mdc](../rules/standard-libraries.mdc)
 - **Validation**: Validate inputs early; fail fast with clear errors
-- **Framework Validation**: Use your framework's validation mechanisms (e.g., Django forms, Pydantic models, marshmallow schemas)
 
 #### Performance
-- **Database Queries**: Minimize database queries; use `select_related()` and `prefetch_related()`
-- **N+1 Problems**: Identify and fix N+1 query issues
 - **Caching**: Consider caching for expensive operations
 - **Lazy Evaluation**: Use generators for large datasets
 - **Algorithm Complexity**: Be aware of time/space complexity
 
 #### Security
 - **Input Validation**: Always validate and sanitize user inputs
-- **SQL Injection**: Use ORM/query builders; never use raw SQL with user input
-- **Authentication**: Verify authentication/authorization checks
 - **Secrets**: Never hardcode secrets; use environment variables (see [env-setup.mdc](../rules/env-setup.mdc))
-- **CSRF/XSS Protection**: Ensure framework protection mechanisms are enabled for state-changing operations
 
-### 6. Framework-Specific Standards
-
-When working with web frameworks (Django, Flask, FastAPI, etc.), follow framework-specific best practices:
-
-#### Models/Data Classes
-- **Field Definitions**: Use appropriate field types with proper constraints
-- **Meta Options**: Include framework-specific metadata where needed
-- **Methods**: Keep model/data class methods focused on data manipulation
-- **Relationships**: Use appropriate relationship types for your ORM
-- **String Representation**: Always implement `__str__` or `__repr__` methods
-
-#### Views/Controllers
-- **View Classes**: Prefer class-based views/controllers for consistency when available
-- **Permissions**: Always specify authentication and permission checks
-- **Query Optimization**: Optimize database queries in views
-- **Response Types**: Return appropriate HTTP status codes
-- **Pagination**: Implement pagination for list endpoints
-
-#### Serialization
-- **Field Definitions**: Use appropriate serializer/schema fields
-- **Validation**: Implement custom validation when needed
-- **Nested Structures**: Use nested serializers/schemas appropriately; avoid deep nesting
-- **Read/Write Fields**: Distinguish between read-only and write-only fields clearly
-
-#### Routing
-- **URL Patterns**: Use descriptive URL/route patterns
-- **Namespacing**: Use appropriate namespacing for routes
-- **RESTful Design**: Follow RESTful conventions when applicable
-
-### 7. Testing Considerations
+### 6. Testing Considerations
+- **Test Framework**: Always use pytest for testing; follow pytest standards in [testing-expert.mdc](python-testing-command.md)
+- **Test Quality**: Tests should be well-structured, clear, and maintainable
 - **Testability**: Code should be easily testable (dependency injection, mocking)
 - **Test Coverage**: Critical paths should have tests
 - **Test Organization**: Tests should mirror code structure
 - **Fixtures**: Use fixtures/factories for test data
 - **Pytest Standards**: When reviewing test code, follow pytest-specific standards in [testing-expert.mdc](python-testing-command.md)
 
-### 8. Code Style & Formatting
+### 7. Code Style & Formatting
 - **Style Guide**: Follow all code style guidelines defined in [python-style.mdc](../rules/code-style.mdc)
-- **PEP 8**: Follow PEP 8 style guide (see [python-style.mdc](../rules/code-style.mdc))
-- **Line Length**: Max 120 characters per line (prefer 100-120). Follow project linter configuration.
-- **Naming Conventions**: Follow naming conventions in [python-style.mdc](../rules/code-style.mdc):
-  - Classes: `PascalCase`
-  - Functions/Variables: `snake_case`
-  - Constants: `UPPER_SNAKE_CASE`
-  - Private: `_leading_underscore`
-- **Whitespace**: Use consistent indentation (4 spaces)
-- **Imports**: Follow import organization in [python-style.mdc](../rules/code-style.mdc)
 
-### 9. Pre-commit Checks - Mandatory
+### 8. Pre-commit Checks - Mandatory
+- Always ensure that all code passes pre-commit checks before review approval. follow the [pre-commit.mdc](../rules/pre-commit.mdc) guidelines for configuration and usage.
 
-**All code MUST pass pre-commit checks before review approval.**
-
-As part of the code review process, verify that:
-
-1. **Pre-commit hooks are configured**: Check that `.pre-commit-config.yaml` exists and is properly configured
-2. **Run pre-commit checks**: Execute `pre-commit run --all-files` or `uv run pre-commit run --all-files` before final review
-3. **All hooks pass**: The following hooks must pass without errors:
-   - **pre-commit-hooks**: trailing-whitespace, end-of-file-fixer, check-merge-conflict, check-added-large-files, check-yaml, check-json, check-toml, debug-statements, check-ast, detect-private-key, mixed-line-ending
-   - **Black**: Code formatting must be correct
-   - **Ruff**: Linting issues must be fixed (auto-fix enabled)
-   - **Pylint**: Code quality checks must pass (separate configs for code and tests)
-
-**Pre-commit Check Process**:
-1. Before starting the review, run: `pre-commit run --all-files`
-2. If any hooks fail, mark as **Critical Issue** - code must be fixed before review approval
-3. Document any pre-commit failures in the review feedback
-4. Ensure all formatting and linting issues are resolved
-
-**Common Pre-commit Issues to Check**:
-- Trailing whitespace
-- Missing end-of-file newline
-- Merge conflict markers (`<<<<<<<`, `=======`, `>>>>>>>`)
-- Large files (>250KB)
-- Invalid YAML/JSON/TOML syntax
-- Debug statements (`print`, `pdb`, etc.)
-- Private keys detected in files
-- Black formatting violations
-- Ruff linting errors
-- Pylint code quality issues
-
-### 10. Code Review Checklist
-
+### 9. Code Review Checklist
 When reviewing code, check for:
 
 #### Structure & Organization
@@ -173,7 +86,7 @@ When reviewing code, check for:
 - [ ] Are functions atomic and focused?
 - [ ] Are functions appropriately sized?
 - [ ] Do function names clearly describe their purpose?
-- [ ] Are parameters reasonable in number?
+- [ ] Are parameters reasonable?
 - [ ] Do functions have minimal side effects?
 
 #### Type Safety
@@ -181,11 +94,6 @@ When reviewing code, check for:
 - [ ] Are type hints accurate and specific?
 - [ ] Is `Any` avoided where possible?
 - [ ] Are generic types used appropriately?
-
-#### Documentation
-- [ ] Do complex functions have docstrings?
-- [ ] Are docstrings clear and complete when present?
-- [ ] Do complex functions include examples in their docstrings?
 
 #### Error Handling
 - [ ] Are exceptions handled appropriately?
@@ -199,17 +107,15 @@ When reviewing code, check for:
 
 #### Security
 - [ ] Is input validation present?
-- [ ] Are authentication/authorization checks in place?
 - [ ] Are secrets handled securely?
+- [ ] Are authentication/authorization checks in place?
 
-#### Framework Best Practices
-- [ ] Are models/data classes properly structured?
-- [ ] Are views/controllers optimized?
-- [ ] Are serializers/schemas well-designed?
-- [ ] Are routes/URLs RESTful and well-organized?
+#### Documentation
+- [ ] Do complex functions have docstrings?
+- [ ] Do complex functions include examples in their docstrings?
+- [ ] Are docstrings clear and complete when present?
 
 ## Review Format
-
 When providing code review feedback:
 
 1. **Start with a summary**: High-level overview of the review
@@ -218,6 +124,7 @@ When providing code review feedback:
 4. **Be constructive**: Explain WHY something is an issue and HOW to fix it
 5. **Acknowledge good practices**: Highlight what was done well
 6. **Provide code examples**: Show how to improve the code
+7. **MUST**: The review must be practical, focus on improving the quality of the code, and be as short as possible so that it is easy to read.
 
 ## Example Review Comments
 
@@ -234,8 +141,6 @@ When providing code review feedback:
 - `transform_data(data: dict[str, Any]) -> dict[str, Any]`
 - `call_external_api(data: dict[str, Any]) -> Response`
 - `process_data(data: dict[str, Any]) -> dict[str, Any]` (orchestrator)
-
-✨ Benefit: Better testability, reusability, and maintainability.
 ```
 
 ### Bad Review Comment:
@@ -251,8 +156,8 @@ This function is too long.
 - **Suggestions**: Optional improvements (optimizations, refactoring opportunities)
 
 ## Remember
-
 - Code reviews are about improving code quality, not criticizing developers
+- Keep it short, focused, and actionable
 - Provide actionable feedback with examples
 - Balance perfectionism with pragmatism
 - Consider context and deadlines, but don't compromise on critical issues
