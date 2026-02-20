@@ -1,0 +1,40 @@
+---
+description: Environment, package management, and project structure rules
+globs:
+  - "**/*.py"
+alwaysApply: true
+---
+
+# Environment & Tools
+
+## 1. Python & Package Management
+* **Version**: Target Python >= 3.12 for all projects.
+* **Tooling**: Use `uv` as the exclusive manager; never use bare `python` or `pip`.
+* **Execution**: Prefix all Python commands with `uv run` (e.g., `uv run pytest`, `uv run python script.py`).
+* **Dependencies**: Manage dependencies in [pyproject.toml](../../pyproject.toml).. Use `uv sync` to install dependencies and `uv add <package>` to add new ones.
+* **Virtual Environments**: `uv` automatically manages virtual environments; no manual venv creation needed.
+
+## 2. Configuration & Workspace
+* **Secrets**: Use a `.env` file in the project root for environment variables; NEVER hardcode sensitive data.
+* **Environment Variables**: Use `UPPER_SNAKE_CASE` naming convention. Load via `python-dotenv` or similar.
+* **Discovery**: Always use the `tree` command to analyze layout before architectural changes.
+* **Safety**: Analyze file structure before any proposal to maintain integrity.
+
+## 3. Development Workflow
+* **Installation**: Run `uv sync` to install all dependencies (including dev dependencies).
+* **Running Scripts**: Use `uv run <script>` instead of direct Python execution.
+* **Testing**: Execute tests with `uv run pytest`.
+* **Package Indexes**: Project uses custom PyPI indexes configured in [pyproject.toml](../../pyproject.toml).; respect existing index configuration.
+* **pre-commit Hooks**: Use pre-commit hooks for linting and formatting; run `pre-commit install` to set up. and uv run `pre-commit run --all-files` to execute manually when needed.
+
+## 4. Dependency Management
+* **Version Pinning**: Pin exact versions for production dependencies to ensure reproducible builds.
+* **Version Ranges**: Use compatible version ranges (e.g., `>=1.0.0,<2.0.0`) for libraries with stable APIs.
+* **Security Updates**: Regularly audit dependencies for security vulnerabilities using `uv pip list --outdated` or security scanning tools.
+* **Dependency Groups**: Use dependency groups in [pyproject.toml](../../pyproject.toml). to separate dev, test, and production dependencies.
+* **Lock Files**: Commit lock files (if generated) to ensure consistent dependency resolution across environments.
+* **Update Strategy**:
+  * Update dependencies incrementally, testing after each update
+  * Review changelogs for breaking changes before major version updates
+  * Pin transitive dependencies only when necessary to resolve conflicts
+* **Dependency Audit**: Run dependency audits regularly and address high/critical severity vulnerabilities promptly.

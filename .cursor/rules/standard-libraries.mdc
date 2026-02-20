@@ -1,46 +1,90 @@
 ---
-description: Mandatory libraries, integration standards, and tool-specific configurations.
+description: Internal libraries and standardized integrations (apply only when relevant).
 globs:
   - "**/*.py"
 alwaysApply: true
 ---
 
-# Standardized Tech Stack
+# Scope Control (CRITICAL)
+Apply these standards ONLY when:
+- The task involves logging, external integrations, or infrastructure concerns
+- New functionality requires these capabilities
 
-## 1. Core Observability & Logging
-* **Logging**: Always use the `custom-python-logger` library for logging and diagnostics.
-  * Use `build_logger()` for create (only once - main file) the logger and for advanced configuration with file output, log levels, etc.
-  * Use `get_logger(module_name)` for get the logger and for standard logging: `from custom_python_logger import get_logger`
-  * Never use Python's standard `logging` module directly.
-* **Exceptions**: Always use `python-custom-exceptions` for error handling and custom exception definitions.
-  * Import `BaseCustomException` for custom exception classes: `from python_custom_exceptions import BaseCustomException`
-  * Use `DiagnosticInfo` for structured diagnostic information when needed.
-* **Jira**: Always use `python-jira-plus` for JIRA interactions.
-  * Use `JiraPlus` class for all JIRA operations: `from python_jira_plus.jira_plus import JiraPlus`
-  * Follow the package's configuration and usage guidelines for authentication and API interactions.
-* **REST API**: Always use `pyrest-model-client` for REST API interactions and data modeling.
-  * Use `RestClient` for making API calls and handling responses: `from pyrest_model_client import RestClient`
-  * Define data models using Pydantic for structured request/response handling.
-* **Vault**: Always use `python-vault` for secure secrets management.
-  * Use `VaultClient` for interacting with Vault: `from python_vault import VaultClient`
-  * Follow best practices for secret retrieval and management, ensuring sensitive information is handled securely.
-* **Gitlab**: Always use `python-gitlab-plus` for GitLab interactions.
-  * Use `GitLabPlus` class for all GitLab operations: `from python_gitlab_plus.gitlab_plus import GitLabPlus`
-  * Follow the package's configuration and usage guidelines for authentication and API interactions.
-* **Github**: Always use `python-github-plus` for GitHub interactions.
-  * Use `GitHubPlus` class for all GitHub operations: `from python_github_plus.github_plus import GitHubPlus`
-  * Follow the package's configuration and usage guidelines for authentication and API interactions.
-* **Django REST Framework CRUD**: Always use `drf-easy-crud` for Django REST Framework CRUD operations.
-  * Use `EasyCRUDViewSet` for defining CRUD endpoints: `from drf_easy_crud import EasyCRUDViewSet`
-  * Follow the package's conventions for serializers, viewsets, and routing to ensure consistent API design.
+Do NOT:
+- Replace existing libraries or patterns unless explicitly requested
+- Introduce internal libraries if the current codebase uses a different approach
+- Add integrations (Jira, Vault, GitHub, etc.) unless required by the task
+- Modify existing logging or exception strategy without request
 
-## 2. Testing & Quality Assurance
-* **Framework**: Always use `pytest` for unit and integration tests.
-* **Execution**: Run tests with `uv run pytest` (see [env-setup.mdc](env-setup.mdc)).
-* **Fixtures**: Use `pytest` fixtures for test setup and teardown.
-* **Conftest**: Place shared fixtures in `conftest.py` files at appropriate directory levels.
-* **pytest plugins**: Use the following plugins:
-  * `pytest-plugins` for enhanced test management and reporting.
-  * `pytest-dynamic-parameterize` for dynamic test parameterization.
-  * `pytest-depends-on` for managing test dependencies.
-  * `pytest-collect-requirements` for collecting test requirements and metadata.
+Always follow existing project patterns first.
+
+---
+
+# Internal Library Usage Policy
+
+When new functionality requires these capabilities, prefer the internal stack below.
+
+## Logging
+If logging is required and the project uses the internal logger:
+- Initialize once in the main entry point:
+  `build_logger()`
+- In modules:
+  `from custom_python_logger import get_logger`
+  `logger = get_logger(__name__)`
+
+Do NOT use the standard `logging` module for new code when the internal logger is already in use.
+
+---
+
+## Exceptions
+For new domain or application exceptions:
+- Inherit from:
+  `from python_custom_exceptions import BaseCustomException`
+
+Do not refactor existing exceptions unless requested.
+
+---
+
+## REST APIs
+When implementing new external API clients:
+- Prefer:
+  `from pyrest_model_client import RestClient`
+- Use Pydantic models for request/response schemas.
+
+Do not replace existing HTTP clients unless explicitly requested.
+
+---
+
+## Secrets
+When secret management is required:
+- Prefer .env or `python-vault`
+- Never hardcode secrets
+- Assume configuration is environment-driven
+
+Only introduce Vault if the task explicitly involves secret retrieval.
+
+---
+
+## Issue Tracking / SCM Integrations
+Use only when the task explicitly involves these systems:
+- Jira → `python-jira-plus`
+- GitLab → `python-gitlab-plus`
+- GitHub → `python-github-plus`
+
+Do not introduce these libraries unless the task requires integration.
+
+---
+
+## Django REST CRUD
+When creating new DRF CRUD endpoints:
+- Prefer `EasyCRUDViewSet` from `drf-easy-crud`
+
+Do not refactor existing viewsets unless requested.
+
+---
+
+# Testing Standards
+- Use `pytest`
+- Shared fixtures in `conftest.py`
+- Prefer fixtures over manual setup
+- Use plugins only if the project already uses them
