@@ -15,8 +15,8 @@
 ## 📦 Installation
 if its a template project:
 ```bash
-git clone https://github.com/aviz92/think-drop.git
-cd think-drop
+git clone https://github.com/aviz92/<project-name>.git
+cd <project-name>
 uv sync
 ```
 
