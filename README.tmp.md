@@ -36,7 +36,6 @@ uv add <lib-name>
 ---
 
 ## ⚙️ Configuration
-
 Create a `.env` file with the following variables:
 ```env
 VAR_NAME=your_value
@@ -72,7 +71,6 @@ describe how to quickly get started with the project, including any necessary co
 ---
 
 ## 🤝 Contributing
-
 If you have a helpful pattern or improvement to suggest:
 Fork the repo
 Create a new branch
@@ -82,12 +80,10 @@ I welcome additions that promote clean, productive, and maintainable development
 ---
 
 ## 📄 License
-
 MIT License — see [LICENSE](LICENSE) for details.
 
 ---
 
 ## 🙏 Thanks
-
 Thanks for exploring this repository!
 Happy coding!
