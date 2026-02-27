@@ -8,7 +8,7 @@
 ---
 
 # 💡 Project Name
-< some project description >
+< project description >
 
 ---
 
