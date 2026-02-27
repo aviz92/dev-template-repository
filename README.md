@@ -1,20 +1,13 @@
-![PyPI version](https://img.shields.io/pypi/v/dev-template-repository)
+![PyPI version](https://img.shields.io/pypi/v/<project-name>)
 ![Python](https://img.shields.io/badge/python->=3.12-blue)
 ![Development Status](https://img.shields.io/badge/status-stable-green)
 ![Maintenance](https://img.shields.io/maintenance/yes/2026)
-![PyPI](https://img.shields.io/pypi/dm/dev-template-repository)
-![License](https://img.shields.io/pypi/l/dev-template-repository)
+![PyPI](https://img.shields.io/pypi/dm/<project-name>)
+![License](https://img.shields.io/pypi/l/<project-name>)
 
 ---
 
 # 🧱 Dev Template Repository
-
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Python](https://img.shields.io/badge/Python-3.12+-blue.svg)](https://www.python.org/)
-[![Code style: Black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
-[![Code style: Ruff](https://img.shields.io/badge/code%20style-ruff-000000.svg)](https://github.com/astral-sh/ruff)
-[![Code style: Pylint](https://img.shields.io/badge/code%20style-pylint-000000.svg)](https://github.com/pylint-dev/pylint)
-
 A comprehensive, production-ready template repository for initializing new development projects with consistent tooling, editor settings, GitHub workflows, and best practices. This template serves as a **baseline setup** for modern development workflows, reducing setup overhead and promoting standardization across all your codebases.
 
 ## 🎯 Overview
