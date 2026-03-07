@@ -92,7 +92,7 @@ Happy coding!
 
 ## 👤 Author
 
-**Avi Zaguri** — Automation Infrastructure Architect
+**Avi Zaguri** — Infrastructure Architect
 
 [![GitHub](https://img.shields.io/badge/GitHub-aviz92-181717?logo=github)](https://github.com/aviz92)
 [![PyPI](https://img.shields.io/badge/PyPI-aviz-3775A9?logo=pypi)](https://pypi.org/user/aviz/)
