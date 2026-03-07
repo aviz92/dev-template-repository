@@ -88,7 +88,7 @@ MIT License — see [LICENSE](LICENSE) for details.
 ---
 
 ## 🙏 Thanks
-Thanks for exploring this repository!
+Thanks for exploring this repository! <br>
 Happy coding!
 
 [![GitHub](https://img.shields.io/badge/GitHub-aviz92-181717?logo=github)](https://github.com/aviz92)
