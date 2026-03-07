@@ -71,11 +71,12 @@ describe how to quickly get started with the project, including any necessary co
 ---
 
 ## 🤝 Contributing
-If you have a helpful pattern or improvement to suggest:
-Fork the repo
-Create a new branch
-Submit a pull request
-I welcome additions that promote clean, productive, and maintainable development.
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature/my-addition`
+3. Make your changes
+4. Commit your changes: `git commit -m 'Add my addition'`
+5. Push to the branch: `git push origin feature/my-addition`
+6. Open a Pull Request
 
 ---
 
