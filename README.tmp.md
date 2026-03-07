@@ -78,6 +78,8 @@ describe how to quickly get started with the project, including any necessary co
 5. Push to the branch: `git push origin feature/my-addition`
 6. Open a Pull Request
 
+Additions that promote clean, productive, and maintainable development are always welcome.
+
 ---
 
 ## 📄 License
