@@ -120,13 +120,13 @@ All tasks are defined in `Taskfile.yml` at the repository root and are intended 
 
 ## 🤝 Contributing
 1. Fork the repository
-2. Create a feature branch: `git checkout -b feature/amazing-feature`
-3. Make your changes and add tests
-4. Ensure all tests pass: `pytest`
-5. Format your code: `black .`
-6. Commit your changes: `git commit -m 'Add amazing feature'`
-7. Push to the branch: `git push origin feature/amazing-feature`
-8. Open a Pull Request
+2. Create a feature branch: `git checkout -b feature/my-addition`
+3. Make your changes
+4. Commit your changes: `git commit -m 'Add my addition'`
+5. Push to the branch: `git push origin feature/my-addition`
+6. Open a Pull Request
+
+Additions that promote clean, productive, and maintainable development are always welcome.
 
 ---
 
@@ -141,3 +141,12 @@ When using this template for a new project:
 - [ ] Add project-specific tests
 
 ---
+
+## 🙏 Thanks
+Thanks for exploring this repository! <br>
+Happy coding!
+
+[![GitHub](https://img.shields.io/badge/GitHub-aviz92-181717?logo=github)](https://github.com/aviz92)
+&nbsp; [![PyPI](https://img.shields.io/badge/PyPI-aviz-3775A9?logo=pypi)](https://pypi.org/user/aviz/)
+&nbsp; [![Blog](https://img.shields.io/badge/Blog-aviz92.github.io-0066CC?logo=googlechrome)](https://aviz92.github.io/)
+&nbsp; [![LinkedIn](https://img.shields.io/badge/LinkedIn-avi--zaguri-0A66C2?logo=linkedin)](https://www.linkedin.com/in/avi-zaguri-41869b11b)
