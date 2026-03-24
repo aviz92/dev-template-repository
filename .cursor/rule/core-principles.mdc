@@ -1,5 +1,5 @@
 ---
-description: SOLID, DRY, YAGNI, KISS, modular extraction, and refactoring safety. Core design principles for all languages.
+description: Core design principles — team-specific rules on top of SOLID, DRY, YAGNI, KISS.
 alwaysApply: true
 ---
 
@@ -8,58 +8,24 @@ alwaysApply: true
 - If you encounter a violation while working nearby, **suggest** a fix — do not apply it silently.
 - Do NOT refactor unrelated code without explicit instruction.
 
-# SOLID
-
-## Single Responsibility (SRP)
-- Every class and function has one reason to change.
-- If you can describe a class with "and", it has too many responsibilities — split it.
-
-## Open/Closed (OCP)
-- Classes should be open for extension, closed for modification.
-- Prefer adding new behavior via subclassing, composition, or strategy — not by editing existing logic.
-
-## Liskov Substitution (LSP)
-- Subclasses must be substitutable for their base class without changing program correctness.
-- If a subclass overrides a method and changes its contract, reconsider the hierarchy.
-
-## Interface Segregation (ISP)
-- Don't force clients to depend on methods they don't use.
-- Prefer small, focused protocols/abstract classes over large, general ones.
-
-## Dependency Inversion (DIP)
-- High-level modules must not depend on low-level modules — both depend on abstractions.
-- Inject dependencies explicitly rather than constructing them internally.
-
-# DRY — Don't Repeat Yourself
-- Eliminate **logic** duplication, not structural similarity.
+# DRY
 - Apply the **Rule of Three**: tolerate one duplication, extract on the third occurrence.
 - Do NOT apply DRY prematurely — two similar-looking things may diverge later.
 
-# YAGNI — You Aren't Gonna Need It
-- Do not build abstractions, base classes, or configuration for features not yet required.
+# YAGNI
 - Every layer of indirection has a cost — justify it with a real, current need.
 
-# KISS — Keep It Simple, Stupid
-- The simplest solution that works correctly is the right solution.
+# KISS
 - If a reviewer needs to pause to understand a line, rewrite it.
 
 # Composition over Inheritance
-- Prefer injecting behavior through dependencies over inheriting it.
-- Use inheritance only for genuine "is-a" relationships.
 - Mixins are acceptable for cross-cutting concerns but are still inheritance — not composition.
 
-# Law of Demeter
-- A function should only talk to its direct dependencies — not to the internals of what it receives.
-
-# Explicit over Implicit
-- Prefer explicit behavior over magic — avoid dynamic attribute setting or hidden side effects.
-- Code should be understandable without running it in your head.
-
 # Modular Extraction
-- Extract a block into a private helper when it has a **distinct sub-purpose**, not just because it's long.
+- Extract when a block has a **distinct sub-purpose** — not just because it's long.
 - Good signals: the block can be named clearly, it's reusable, or it's testable in isolation.
 
 # Refactoring Protocol
-- Follow the **Boy Scout Rule**: leave code cleaner than you found it — but **within scope**.
+- Follow the **Boy Scout Rule** within scope only.
 - Suggest violations found nearby as a separate, focused change — never silently refactor.
 - Refactor in small, safe steps — one concern at a time, with tests as a safety net.
