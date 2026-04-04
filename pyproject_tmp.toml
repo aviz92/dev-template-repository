@@ -10,7 +10,7 @@ readme = "README.md"
 requires-python = ">=3.11"
 license = { text = "MIT" }
 authors = [{ name = "Avi Zaguri" },]
-keywords = ["development", "xxxxx_project_keywords"]
+keywords = ["development", "python", "pytest", "xxxxx_project_keywords"]
 
 classifiers = [
     "Development Status :: 4 - Beta",
