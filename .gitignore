@@ -179,3 +179,5 @@ results_output/
 migrations/
 .cursor
 .vscode
+.claude
+CLAUDE.md
