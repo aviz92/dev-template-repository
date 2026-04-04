@@ -7,7 +7,7 @@ name = "xxxxx-project-name"
 version = "0.0.1"
 description = "xxxxx_project_description"
 readme = "README.md"
-requires-python = ">=3.11"
+requires-python = ">=3.12"
 license = { text = "MIT" }
 authors = [{ name = "Avi Zaguri" },]
 keywords = [
