@@ -13,13 +13,21 @@ authors = [{ name = "Avi Zaguri" },]
 keywords = ["development", "python", "pytest", "xxxxx_project_keywords"]
 
 classifiers = [
+    # "Development Status :: 5 - Production/Stable",
     "Development Status :: 4 - Beta",
     "Intended Audience :: Developers",
-    "Framework :: Pytest",
-    "Programming Language :: Python :: 3.11",
+    "Topic :: Software Development :: Libraries",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3.12",
 ]
 
-dependencies = []
+dependencies = [
+    "setuptools",
+    "wheel",
+    "dotenv",
+    "custom-python-logger",
+]
 
 [project.urls]
 Homepage = "https://github.com/aviz92/xxxxx-project-name"
