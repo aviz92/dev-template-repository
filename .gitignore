@@ -177,7 +177,8 @@ cython_debug/
 logs/
 results_output/
 migrations/
-.cursor
+internal_assets/
 .vscode
+.cursor
 .claude
 CLAUDE.md
