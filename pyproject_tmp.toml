@@ -29,10 +29,16 @@ classifiers = [
 ]
 
 dependencies = [
-    "setuptools",
-    "wheel",
-    "dotenv",
     "custom-python-logger",
+]
+
+[dependency-groups]
+dev = [
+    "pre-commit>=4.5.0",
+    "pytest>=9.0.1",
+    "python-dotenv>=1.2.2",
+    "setuptools>=82.0.1",
+    "wheel>=0.45.1",
 ]
 
 [project.urls]
@@ -45,7 +51,7 @@ where = ["."]
 # include = ["xxxxx_project_name*"]
 namespaces = false
 
-[project.scripts]  # must using "uv sync" or "uv pip install -e ." first
+[project.scripts]  # must using "uv sync --group dev" or "uv pip install -e ." first
 clean_pycache = "scripts.clean__pycache__:main"
 run_pytest_marker = "scripts.ci.run_pytest_marker:main"
 clean_migrations = "scripts.django.clean_migrations:main"

@@ -66,7 +66,7 @@ uv venv
 source .venv/bin/activate   # On Windows: .venv\Scripts\activate
 
 # Install dependencies
-uv sync # or uv pip install -r requirements.txt
+uv sync --group dev # or uv pip install -r requirements.txt
 
 # Copy environment template
 cp env.template .env
