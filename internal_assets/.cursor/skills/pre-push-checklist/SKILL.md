@@ -193,6 +193,9 @@ uv run bump2version patch   # or minor / major
 # Check if pre-commit is available via uv
 uv run pre-commit --version 2>/dev/null || pre-commit --version 2>/dev/null || echo "PRE_COMMIT_NOT_INSTALLED"
 
+# If pre-commit is not installed, install it via the following command
+uv run pre-commit install --hook-type pre-push 2>/dev/null || echo "FAILED_TO_INSTALL_PRE_COMMIT"
+
 # Run on all files
 uv run pre-commit run --all-files 2>/dev/null || pre-commit run --all-files
 ```

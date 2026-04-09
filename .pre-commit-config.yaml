@@ -1,5 +1,6 @@
 # https://pre-commit.com
 # https://github.com/pre-commit
+# To install pre-commit: `uv run pre-commit install --hook-type pre-push`
 # pre-commit run --all-files
 # uv run pre-commit run --all-files
 
