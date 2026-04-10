@@ -1,0 +1,38 @@
+---
+paths:
+  - "**/*.py"
+---
+
+# Scope Control
+- Apply rules **only** to code you add or modify.
+- Do NOT restructure existing systems unless explicitly asked.
+
+# Idempotency
+- All automation and infrastructure operations must be idempotent — running the same operation multiple times must produce the same result.
+- Design API endpoints to be idempotent where possible — prefer `PUT`/`PATCH` over repeated `POST` calls.
+- Use idempotency keys for critical operations: payments, emails, notifications.
+
+# Backward Compatibility
+- Never introduce breaking changes without a versioning strategy.
+- Version APIs explicitly in the URL path: `/api/v1/`, `/api/v2/`.
+- Database migrations must be backward compatible — new columns must be nullable or have defaults.
+- Never rename or drop columns in a single migration — add first, migrate data, remove in a later release.
+
+# Performance
+- Write correct code first — optimize only when profiling identifies a real bottleneck.
+- Optimize algorithms and data structures before micro-optimizations.
+- Use generators for large datasets — never load everything into memory at once.
+- Cache expensive computations — always document the cache invalidation strategy explicitly alongside the cache.
+- Be aware of N+1 query problems — use `select_related`/`prefetch_related` in Django, eager loading in SQLAlchemy.
+- Set timeouts on all external calls — never wait indefinitely.
+
+# Domain Events
+- Emit domain events for significant business operations: include `timestamp`, `entity_id`, and `event_type` at minimum.
+- Events are invaluable for debugging, auditing, and replaying state — treat them as first-class outputs.
+
+# Verification
+- Architecture must support comprehensive testing and edge-case coverage.
+- Critical paths must have integration tests, not just unit tests.
+- Validate assumptions with assertions in non-hot paths — fail loudly rather than silently corrupt data.
+- Prefer dependency injection over module-level singletons — makes components independently testable.
+- Design service boundaries to be mockable — external dependencies behind interfaces, not inline calls.

@@ -1,0 +1,80 @@
+---
+paths:
+  - "**/tests/**/*.py"
+  - "**/conftest.py"
+---
+
+# Scope Control
+- Apply rules **only** to test code you add or modify.
+- Do NOT restructure existing tests unless explicitly asked.
+- Do NOT add fixtures or markers to existing tests unless required by the task.
+
+# Team Conventions
+- Run tests with: `uv run pytest`
+- Use `custom-python-logger` for any test logging — never `print()`.
+- Use `pytest-dynamic-parameterize` for dynamic parameter generation.
+- Use `pytest-depends-on` for explicit test dependencies — never rely on execution order implicitly.
+- Use `pytest-collect-requirements` for requirement traceability when tests map to requirements.
+- Use `pytest-plugins` for enhanced reporting and CI utilities.
+
+# File & Folder Structure
+- Mirror the source structure under a `tests/` root.
+- Separate by type: `unit/`, `integration/`, `e2e/`.
+- Unit tests live at `tests/unit/<same-path-as-source>/test_<module>.py`.
+- Integration tests live at `tests/integration/test_<flow>.py`.
+- Each level can have its own `conftest.py` — keep fixtures as close to their usage as possible.
+
+# Test Naming
+- Pattern: `test_<what>_when_<condition>_<expected_outcome>`.
+- Good: `test_get_user_when_id_not_found_raises_not_found_error`, `test_create_order_when_stock_empty_returns_false`.
+- Bad: `test_user`, `test_get`, `test_1`.
+- Test names should read like a sentence — no abbreviations.
+- Test class names: `PascalCase` with `Test` prefix — `TestUserService`, `TestOrderFlow`.
+
+# Assertions
+- Use plain `assert` — never unittest-style (`assertEqual`, `assertTrue`, etc.).
+- One logical assertion per test — multiple related fields on the same object are fine, unrelated behaviors are not.
+- Add assertion messages for non-obvious checks: `assert result > 0, f"Expected positive result, got {result}"`.
+- Use `pytest.raises(ExceptionType, match="message fragment")` for exception testing — never try/except.
+
+# Fixtures
+- Use fixtures for all setup and teardown — never `setUp`/`tearDown`.
+- Default scope is `function` — only widen to `module` or `session` when explicitly justified.
+- Use `yield` fixtures for cleanup — yield the resource, then teardown after the yield.
+- Name fixtures as nouns, not verbs: `user_factory`, `mock_client` — not `create_user`, `setup_client`.
+- Shared fixtures belong in `conftest.py` at the appropriate level.
+- Never hide important setup inside fixtures — keep tests readable without jumping to fixture definitions.
+
+# Markers
+- Register all custom markers in `pytest.ini`.
+- Standard markers to use: `unit`, `integration`, `slow`, `smoke`.
+- Use `pytestmark` at module level to categorize all tests in a file.
+- Use `@pytest.mark.<name>` on individual tests for constraints specific to that test only.
+- Always provide a `reason` for `@pytest.mark.skip` and `@pytest.mark.xfail` — never leave them blank.
+
+# Parametrize
+- Use `@pytest.mark.parametrize` for data-driven tests — never duplicate test logic across similar tests.
+- Always provide meaningful `ids` for complex cases: `ids=["valid_user", "empty_name", "too_long"]`.
+- For dynamic or function-based parameterization, use `pytest-dynamic-parameterize`.
+
+# Test Dependencies
+- Tests must be independent by default — no shared mutable state between tests.
+- If a test genuinely depends on another, declare it explicitly with `pytest-depends-on`: `@pytest.mark.depends(on=["test_create_user"])`.
+- Never rely on implicit execution order.
+
+# Mocking
+- Prefer `pytest-mock` (`mocker` fixture) over raw `unittest.mock`.
+- Mock **where the object is used**, not where it is defined — patch `app.services.user_service.requests.get`, not `requests.get`.
+- Avoid over-mocking — if a test mocks everything, it tests nothing.
+- Use `mocker.spy` to wrap real behavior when you need to assert calls without replacing logic.
+
+# conftest.py
+- Root `conftest.py`: session-wide fixtures — DB connections, app client, global config.
+- Module-level `conftest.py`: fixtures specific to that test group only.
+- Never import from `conftest.py` directly — pytest discovers fixtures automatically.
+- Keep `conftest.py` lean — no business logic, no test helpers that belong in a `utils/` module.
+
+# Test Coverage
+- Every test should cover: happy path, edge cases, and failure cases.
+- Test behavior and outcomes — never implementation details.
+- Never write tests purely for coverage metrics — they provide false confidence.

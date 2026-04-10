@@ -1,0 +1,48 @@
+---
+paths:
+  - "**/api/**/*.py"
+---
+
+# Scope Control
+- Apply rules **only** to code you add or modify.
+- If you encounter a violation while working nearby, **suggest** a fix — do not apply it silently.
+- Do NOT restructure existing observability setup unless explicitly asked.
+
+# Logging
+- Use `custom-python-logger` — never the standard `logging` module directly.
+- Use structured logging (JSON) in production — parseable by log aggregation tools.
+- Use appropriate log levels consistently:
+  - `DEBUG` — detailed diagnostic info, development only
+  - `INFO` — normal application flow, key business events
+  - `WARNING` — unexpected but recoverable situations
+  - `ERROR` — failures that need attention, always include context
+  - `CRITICAL` — system is unusable, requires immediate action
+- Never log sensitive data — no passwords, tokens, or PII.
+- Always include relevant context in error logs: entity IDs, operation name, and exc_info=True.
+- Raise semantic exceptions from `python-custom-exceptions` — never bare `Exception` or `RuntimeError`.
+- Never swallow exceptions silently — let them propagate to the logging boundary.
+
+# Health Checks
+- Every service must expose a `/health` endpoint:
+  - `/health/live` — is the process alive? (liveness)
+  - `/health/ready` — is the service ready to accept traffic? (readiness)
+- Liveness check: return `200` if the process is running.
+- Readiness check: verify DB connection, cache, and critical dependencies before returning `200`.
+- Never return `200` with an error body — use proper HTTP status codes.
+
+# Metrics
+- Expose metrics in Prometheus format at `/metrics`.
+- Follow Prometheus naming conventions: `<namespace>_<subsystem>_<name>_<unit>` — for example: `app_requests_total`, `app_request_duration_seconds`.
+- Track at minimum: request rate, error rate, latency (p50, p95, p99).
+- Use labels for dimensions — never create a new metric per dimension value.
+- Avoid high-cardinality labels — never use user IDs or request IDs as label values.
+
+# Distributed Tracing
+- Use `opentelemetry-sdk` for instrumentation — never inject trace headers manually.
+- Propagate trace context across service boundaries using standard headers (`traceparent`).
+- Add span attributes for key business context: `user_id`, `order_id`, `env`.
+- Never log trace IDs separately — include them as structured log fields for correlation.
+
+# Observability Principles
+- Design systems to be observable from the outside — metrics, logs, and traces are not optional.
+- Every new service must have health checks, metrics, and structured logging before going to production.

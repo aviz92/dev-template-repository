@@ -1,0 +1,48 @@
+---
+paths:
+  - "**/Dockerfile*"
+  - "**/docker-compose*.yml"
+  - "**/docker-compose*.yaml"
+  - "**/.dockerignore"
+---
+
+# Scope Control
+- Apply rules **only** to container configuration you add or modify.
+- Do NOT restructure existing Dockerfiles or compose files unless explicitly asked.
+
+# Base Images
+- Use minimal base images — prefer `python:3.12-slim` over `python:3.12`.
+- Always pin base image versions — never use `latest`.
+- Add a `.dockerignore` — exclude `.env`, `__pycache__`, `.git`, `tests/`, and dev artifacts.
+
+# Multi-Stage Builds
+- Use multi-stage builds to keep final images small.
+- Builder stage: install dependencies, compile assets, run any build steps.
+- Runtime stage: copy only the virtualenv and application source — nothing else.
+- Never copy dev dependencies, test files, or build tools into the runtime stage.
+
+# Layer Caching
+- Order instructions from least to most frequently changed — dependencies before source code.
+- Copy `pyproject.toml` and `uv.lock` first, run `uv sync`, then copy application source.
+- Never copy source code before installing dependencies — it busts the cache on every change.
+
+# Security
+- Never run containers as root — always create a named non-root user and switch to it with `USER`.
+- Never copy secrets into images — use environment variables or mounted secrets at runtime.
+- Never hardcode secrets in `ENV` or `ARG` instructions — they persist in image layers.
+- Drop unnecessary Linux capabilities — use `--cap-drop=ALL` and add back only what's needed.
+
+# Health Checks
+- Always define a `HEALTHCHECK` for long-running services.
+- Use the `/health/live` endpoint — set interval 30s, timeout 5s, retries 3.
+
+# Logging
+- Output logs to `stdout`/`stderr` only — never write logs to files inside containers.
+
+# Docker Compose
+- Use `docker-compose.yml` for local development only — never for production orchestration.
+- For production, use Kubernetes manifests or a managed platform.
+- Always define resource limits (cpus, memory) for every service.
+- Use named volumes for persistent data — never bind-mount production data directories.
+- Load secrets via `.env` file — never hardcode values in `docker-compose.yml`.
+- Bind non-public services to `127.0.0.1` — never expose internal ports to `0.0.0.0`.

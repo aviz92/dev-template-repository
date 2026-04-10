@@ -1,0 +1,43 @@
+---
+paths:
+  - "**/*.py"
+---
+
+# Scope Control
+- Apply principles **only** to code you add or modify.
+- If you encounter a violation while working nearby, **suggest** a fix — do not apply it silently.
+- Do NOT refactor unrelated code without explicit instruction.
+
+# DRY
+- Apply the **Rule of Three**: tolerate one duplication, extract on the third occurrence.
+- Do NOT apply DRY prematurely — two similar-looking things may diverge later.
+
+# YAGNI
+- Do not add abstractions, parameters, or config options for hypothetical future use cases.
+- If the justification starts with "we might need..." — don't build it.
+
+# KISS
+- Prefer the simplest solution that works — avoid unnecessary complexity.
+- If a solution requires a complex explanation, it's likely not the right one.
+- Avoid clever tricks — code is read more often than written, so prioritize readability.
+- If you find yourself writing a comment to explain how the code works, consider simplifying the code
+
+# Composition over Inheritance
+- Mixins are acceptable for cross-cutting concerns but are still inheritance — not composition.
+- Prefer ABC over Protocol for defining interfaces — structural subtyping over nominal.
+- Favor injecting dependencies over inheriting them.
+
+# Modular Extraction
+- Extract when a block has a **distinct sub-purpose** — not just because it's long.
+- Good signals: the block can be named clearly, it's reusable, or it's testable in isolation.
+
+# Refactoring Protocol
+- Follow the **Boy Scout Rule** within scope only.
+- Suggest violations found nearby as a separate, focused change — never silently refactor.
+- Refactor in small, safe steps — one concern at a time, with tests as a safety net.
+- If a refactor starts pulling in more than 2–3 files unexpectedly, stop and flag it before continuing.
+
+# Python-Specific
+- Prefer Pydantic or dataclasses models over plain dicts for structured data.
+- Avoid mutable default arguments — use None and assign inside the function body.
+- Use __slots__ only when profiling shows memory pressure — not preemptively.

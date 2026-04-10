@@ -1,5 +1,5 @@
 ---
-name: build-tests
+name: python-build-tests
 description: >
   Write pytest tests for Python code following Avi's workspace conventions.
   Use this skill whenever the user asks to write, add, generate, or improve

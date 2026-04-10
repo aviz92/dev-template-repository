@@ -1,5 +1,5 @@
 ---
-name: build-cli-tool
+name: python-build-cli-tool
 description: >
   Build a production-ready Python CLI tool following Avi's workspace conventions.
   Use this skill whenever the user asks to build, scaffold, create, or add a CLI

@@ -1,0 +1,49 @@
+---
+paths:
+  - "**/*.py"
+---
+
+# Scope Control
+- Apply style rules **only** to code you add or modify.
+- Do NOT reformat or refactor unrelated parts of the file.
+- Do NOT change existing function signatures unless required by the task.
+- Do NOT add docstrings to existing code unless explicitly requested.
+
+# Code Style
+- Follow PEP 8.
+- Maximum line length: 120 characters.
+- Use 4 spaces for indentation — never tabs.
+- Prefer keyword arguments over positional: `func(param=value)`.
+- Prefer f-strings over `.format()` or `%` formatting.
+- Avoid magic numbers — assign them to named constants. Good: `MAX_RETRIES = 3`. Bad: `range(3)` inline.
+
+# Type Hints
+- Required for all new or modified functions — annotate parameters and return type.
+- Always annotate `-> None` explicitly for functions that return nothing.
+- Python 3.12+: use built-ins directly — `list[str]`, `dict[str, Any]`, `X | Y`, `X | None`.
+- Avoid `Any` unless absolutely necessary — if you use it, leave a comment explaining why.
+- Use `TypeAlias` for complex or repeated type definitions: `type UserId = int` (Python 3.12+).
+
+# Docstrings
+- Use Google-style docstrings for complex new or modified functions only.
+- Simple, self-explanatory functions do not need a docstring.
+- Include `Args`, `Returns`, and `Raises` sections where applicable.
+- Include a usage example when the function behavior is non-obvious.
+
+# Comments
+- Write comments that explain **why**, not **what** — the code explains what.
+- Avoid obvious comments that restate the code. Bad: `i += 1  # increment i`. Good: `i += 1  # skip header row`.
+- Use inline comments sparingly — prefer self-documenting code.
+
+# Imports
+- No unused imports.
+- Always use absolute imports for internal modules.
+
+# Error Handling
+- Never use bare `except:` — always catch specific exceptions.
+- Catch the narrowest exception possible — `except ValueError`, not `except Exception`.
+- Always provide clear, actionable error messages.
+- Validate inputs early — fail fast before side effects occur.
+- Log errors with context before re-raising: include the input and the exception in the log message with `exc_info=True`.
+- Use `python-custom-exceptions` for all domain-specific errors — never raise bare `Exception` or `RuntimeError`.
+- Never silence exceptions with empty `except` blocks or bare `pass`.

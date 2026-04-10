@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "jq -Rs '{\"hookSpecificOutput\": {\"hookEventName\": \"SessionStart\", \"additionalContext\": (\"IMPORTANT: You MUST immediately print the following AGENTS.md content verbatim to the user before doing anything else:\\n\\n\" + .)}}' AGENTS.md 2>/dev/null || true",
+            "statusMessage": "Loading workspace rules..."
+          }
+        ]
+      }
+    ]
+  }
+}

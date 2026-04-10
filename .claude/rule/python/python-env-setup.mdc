@@ -1,0 +1,29 @@
+---
+paths:
+  - "**/*.py"
+  - "**/pyproject.toml"
+---
+
+# Scope Control
+- Apply rules **only** to configuration and code you add or modify.
+- Do NOT change dependency strategy or existing version pins unless explicitly asked.
+
+# Python & Package Management
+- Target Python >= 3.12.
+- Use `uv` as the exclusive environment and dependency manager.
+- Never suggest raw `pip` or `python` commands — always prefix with `uv run`.
+- Manage dependencies exclusively via `pyproject.toml` — never edit `uv.lock` directly.
+- Install dependencies: `uv sync --group dev`.
+- Add a new dependency: `uv add <package>`.
+- Assume uv manages virtual environments automatically — never suggest manual venv steps.
+
+# Execution Commands
+- Testing: `uv run pytest`
+- Running scripts: `uv run python script.py`
+- Running tools: `uv run <tool>`
+
+# Dependency Management
+- Pin all dependency versions — avoid floating ranges (`>=`, `*`) in production.
+- Respect existing index configuration in `pyproject.toml` — do not change it unless asked.
+- Configure pytest under `[tool.pytest.ini_options]` in `pyproject.toml` — never use `pytest.ini` or `setup.cfg`.
+- Configure all tools (ruff, mypy, coverage) under `[tool.*]` in `pyproject.toml` — single source of configuration.
