@@ -3,7 +3,6 @@ name: python-build-cli-tool
 description: >
   Build a production-ready Python CLI tool using python-base-command.
   Use when asked to build, scaffold, or add a CLI tool, command, or entry point.
-disable-model-invocation: true
 allowed-tools: Bash(uv run *) Bash(pre-commit *) Read Grep
 argument-hint: "[command-name]"
 ---
