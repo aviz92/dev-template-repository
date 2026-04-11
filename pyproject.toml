@@ -3,9 +3,9 @@ requires = ["setuptools", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "xxxxx-project-name"
+name = "dev-template-repository"
 version = "0.0.1"
-description = "xxxxx_project_description"
+description = "A Python development template repository with CLI tools and best practices"
 readme = "README.md"
 requires-python = ">=3.12"
 license = { text = "MIT" }
@@ -14,8 +14,7 @@ authors = [{ name = "Avi Zaguri" },]
 keywords = [
     "development",
     "python",
-    "pytest",
-    "xxxxx_project_keywords"
+    "template",
 ]
 
 classifiers = [
@@ -43,13 +42,13 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/aviz92/xxxxx-project-name"
-Repository = "https://github.com/aviz92/xxxxx-project-name"
-Issues = "https://github.com/aviz92/xxxxx-project-name/issues"
+Homepage = "https://github.com/aviz92/dev-template-repository"
+Repository = "https://github.com/aviz92/dev-template-repository"
+Issues = "https://github.com/aviz92/dev-template-repository/issues"
 
 [tool.setuptools.packages.find]
 where = ["."]
-# include = ["xxxxx_project_name*"]
+# include = ["dev_template_repository*"]
 namespaces = false
 
 [project.scripts]  # must using "uv sync --group dev" or "uv pip install -e ." first
