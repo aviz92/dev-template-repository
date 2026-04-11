@@ -4,7 +4,7 @@
 # pre-commit run --all-files
 # uv run pre-commit run --all-files
 
-default_stages: [pre-push]
+default_stages: [pre-commit, pre-push]
 
 repos: # Black → isort → Ruff (fix=false) → Pylint
   # ### pre-commit-hooks ###
