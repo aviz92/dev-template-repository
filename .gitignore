@@ -118,7 +118,7 @@ dmypy.json
 local_settings.py
 db.sqlite3
 db.sqlite3-journal
-# migrations/  ← intentionally tracked; uncomment only if needed
+migrations/
 
 # ============================================================
 # Flask
@@ -184,10 +184,12 @@ docker-compose.override.yml
 # ============================================================
 # AI
 # ============================================================
+# AGENTS.md
 
 # Claude
 .claude
 CLAUDE.md
+CLAUDE.local.md
 
 # ============================================================
 # Logs & Reports
@@ -200,3 +202,5 @@ results_output/
 # Project-specific
 # ============================================================
 internal_assets/
+
+# git restore --staged .
