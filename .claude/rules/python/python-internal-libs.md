@@ -55,3 +55,4 @@ Use only when the task explicitly requires interaction with the respective platf
 - Jira → `python-jira-plus`
 - GitLab → `python-gitlab-plus`
 - GitHub → `python-github-plus`
+- Notion → `python-notion-plus`
