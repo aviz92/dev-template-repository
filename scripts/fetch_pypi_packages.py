@@ -9,7 +9,11 @@ import urllib.request
 import xmlrpc.client
 
 PYPI_USER = "aviz"
-
+IGNORE_PACKAGES = [
+    "python-test-aviz",
+    "python-pandas-translation",
+    "python-llm-factory",
+]
 
 def get_user_packages(user: str) -> list[str]:
     client = xmlrpc.client.ServerProxy("https://pypi.org/pypi")
@@ -31,10 +35,12 @@ def main() -> None:
         print("No packages found.", file=sys.stderr)
         sys.exit(1)
 
-    print(f"Found {len(packages)} packages\n")
+    print(f"Packages found: \n")
 
     results = []
     for pkg in packages:
+        if pkg in IGNORE_PACKAGES:
+            continue
         try:
             version = get_latest_version(pkg)
             results.append((pkg, version))

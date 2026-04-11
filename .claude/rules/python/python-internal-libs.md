@@ -50,6 +50,17 @@ paths:
 ## Versioned Models
 - Use `django-versioned-models` for models that require release management or data versioning.
 
+# Testing Utilities
+Use only in test files — never in production code:
+- `pytest-plugins` — shared pytest plugin/fixture suite.
+- `pytest-collect-requirements` — requirement-based test collection.
+- `pytest-depends-on` — declare test dependencies.
+- `pytest-dynamic-parameterize` — runtime parameterization of test cases.
+- `pytest-only-markers` — run only marked tests.
+
+# Media
+- Use `cast-studio` for media casting and streaming workflows.
+
 # Integrations
 Use only when the task explicitly requires interaction with the respective platform:
 - Jira → `python-jira-plus`
