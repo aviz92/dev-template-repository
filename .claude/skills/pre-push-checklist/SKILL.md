@@ -3,7 +3,6 @@ name: pre-push-checklist
 description: >
   End-of-session pre-push verification checklist. Runs five checks: pre-commit,
   tests, README, CHANGELOG, and pyproject.toml version bump.
-disable-model-invocation: true
 allowed-tools: Bash(uv run *) Bash(pre-commit *) Bash(git *) Bash(pytest *) Bash(grep *) Bash(find *) Bash(head *) Read
 ---
 
