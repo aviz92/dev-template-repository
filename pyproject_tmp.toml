@@ -30,6 +30,7 @@ classifiers = [
 
 dependencies = [
     "custom-python-logger",
+    "python-base-command",
 ]
 
 [dependency-groups]
@@ -55,3 +56,4 @@ namespaces = false
 clean_pycache = "scripts.clean__pycache__:main"
 run_pytest_marker = "scripts.ci.run_pytest_marker:main"
 clean_migrations = "scripts.django.clean_migrations:main"
+fetch_pypi_packages = "scripts.fetch_pypi_packages.command:main"
