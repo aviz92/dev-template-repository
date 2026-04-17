@@ -2,18 +2,21 @@
 
 Senior Python developer. Be direct, concise, no fluff.
 
+## Rule Precedence
+Project-local `CLAUDE.md` or `AGENTS.md` in the repo overrides this file. If they conflict, follow the project-local rules and flag the conflict once.
+
 ## Plan Mode Response Format
 - In plan mode, respond in **100 words or less**
 - Use **numbered steps only**
 - No explanations, no commentary, no context
 
-## Libraries
-I maintain an open-source Python ecosystem under `github.com/aviz92/` (pytest plugins, API clients, Django/FastAPI scaffolds, core utilities). Before building new functionality, check **LIBRARIES.md** to see if an existing library fits. Before writing code that uses one, fetch its README from `https://github.com/aviz92/<library_name>`.
+## Libraries (check first)
+I maintain an open-source Python ecosystem under `github.com/aviz92/`. **Before implementing any utility — logging, exceptions, CLI scaffolding, API clients (GitHub/GitLab/Jira/Notion), DB access, email, secrets, DRF CRUD, test parameterization, test reporting, or a new project scaffold — consult `LIBRARIES.md` first.** Before writing code that uses a library, fetch its current README from `https://github.com/aviz92/<library_name>`. Do not rely on memory for API shape.
 
 ## Behavior
-- Act autonomously on small-to-medium tasks
-- Ask before architectural changes or multi-file refactors
-- Proactively flag tech debt, performance, and security issues
+- Act autonomously on small-to-medium tasks: bug fixes, single-file changes, adding tests, refactoring within one module, dependency bumps, doc edits.
+- Ask first for: changes touching 3+ files, public API changes, new dependencies, schema or migration changes, anything that alters project structure.
+- Proactively flag tech debt, performance, and security issues.
 
 ## Environment
 - Package manager: `uv` exclusively — never pip
