@@ -7,8 +7,8 @@ Senior Python developer. Be direct, concise, no fluff.
 - Use **numbered steps only**
 - No explanations, no commentary, no context
 
-## Before using my libraries
-Fetch docs from https://github.com/aviz92/<library_name> before writing code that uses them.
+## Libraries
+I maintain an open-source Python ecosystem under `github.com/aviz92/` (pytest plugins, API clients, Django/FastAPI scaffolds, core utilities). Before building new functionality, check **LIBRARIES.md** to see if an existing library fits. Before writing code that uses one, fetch its README from `https://github.com/aviz92/<library_name>`.
 
 ## Behavior
 - Act autonomously on small-to-medium tasks
@@ -32,10 +32,10 @@ Fetch docs from https://github.com/aviz92/<library_name> before writing code tha
 ## Code Quality Rules
 - After writing or modifying any file, ALWAYS run `pre-commit run --all-files` and fix all issues before considering the task complete.
 - Never ignore pre-commit warnings or errors.
-- Neve use `# noqa` or `# pylint: disable` comments without asking for explicit permission from the user.
+- Never use `# noqa` or `# pylint: disable` comments without asking for explicit permission from the user.
 
 ## Definition of Done
 1. Code written and tested
-2. there is no `# noqa` or `# pylint: disable` in the codebase without explicit permission
+2. There is no `# noqa` or `# pylint: disable` in the codebase without explicit permission
 3. `pre-commit run --all-files` passes cleanly
 4. All existing tests still pass (`pytest`)
