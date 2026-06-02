@@ -28,7 +28,7 @@ classifiers = [
 ]
 
 dependencies = [
-    "custom-python-logger",
+    "custom-python-logger>=4.0.2",
     "pydantic-settings>=2.14.0",
     "python-base-command",
 ]
