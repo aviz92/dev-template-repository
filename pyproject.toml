@@ -31,6 +31,7 @@ dependencies = [
     "custom-python-logger>=4.1.0",
     "pydantic-settings>=2.15.0",
     "python-base-command",
+    "pytest-plugins",
 ]
 
 [dependency-groups]
