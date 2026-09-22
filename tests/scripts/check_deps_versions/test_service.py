@@ -113,7 +113,7 @@ class TestCheckOutdatedDependencies:
         assert all(name != "err" for name, _, _ in result), "Failed lookup should be skipped, not raised"
 
 
-class TestProjectDependenciesAreLatest:
+class TestProjectDependenciesAreLatest:  # The real network test, not a unit test
     def test_all_project_dependencies_are_on_latest_pypi_version(self) -> None:
         """Guard test: fails if any real dependency in this repo's pyproject.toml
         is behind the latest published PyPI release. Hits the network."""
