@@ -28,17 +28,17 @@ classifiers = [
 ]
 
 dependencies = [
-    "custom-python-logger>=4.0.2",
-    "pydantic-settings>=2.14.0",
+    "custom-python-logger>=4.1.0",
+    "pydantic-settings>=2.15.0",
     "python-base-command",
 ]
 
 [dependency-groups]
 dev = [
-    "pre-commit>=4.5.0",
-    "pytest>=9.0.1",
-    "python-dotenv>=1.2.2",
-    "setuptools>=82.0.1",
+    "pre-commit>=4.6.2",
+    "pytest>=9.1.1",
+    "python-dotenv>=1.2.3",
+    "setuptools>=84.0.0",
     "wheel>=0.45.1",
 ]
 
@@ -55,5 +55,6 @@ namespaces = false
 [project.scripts]  # must using "uv sync --group dev" or "uv pip install -e ." first
 clean_pycache = "scripts.clean_pycache.command:main"
 fetch_pypi_packages = "scripts.fetch_pypi_packages.command:main"
+check_deps_versions = "scripts.check_deps_versions.command:main"
 clean_migrations = "scripts.django.clean_migrations.command:main"
 run_pytest_marker = "scripts.ci.run_pytest_marker:main"
