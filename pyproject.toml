@@ -30,6 +30,7 @@ classifiers = [
 dependencies = [
     "custom-python-logger>=4.1.0",
     "pydantic-settings>=2.15.0",
+    "python-base-toolkit>=1.2.1",
 ]
 
 [dependency-groups]
