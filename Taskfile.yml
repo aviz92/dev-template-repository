@@ -7,7 +7,9 @@ dotenv:
   - .env
 
 includes:
-  infra: .venv/lib/python3.13/site-packages/python_base_toolkit/ci/task_files/includes.yml
+  infra:
+    taskfile: .venv/lib/python3.13/site-packages/python_base_toolkit/ci/task_files/includes.yml
+    optional: true
 
 tasks:
   print-vars:
